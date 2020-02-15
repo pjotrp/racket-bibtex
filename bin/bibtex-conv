@@ -1,0 +1,84 @@
+#lang racket
+
+(require json)
+
+(define verbose-mode (make-parameter #f))
+
+(define file-to-compile
+  (command-line
+   #:program "bibtex-conv"
+   #:once-each
+   [("-v" "--verbose") "Compile with verbose messages"
+                       (verbose-mode #t)]
+))
+
+;; (let [(buf (read-bytes 100))]
+;;   (display buf))
+
+#|
+(define (reader lines)
+  (cond
+    [(eof-object? current-input-port) lines]
+    ;; [else (cons lines (read-line (current-input-port)))]
+    [else (let [(new (cons lines (read-line (current-input-port))))]
+            (display new)
+            (reader new)
+    )]))
+|#
+
+(define (forever)
+  (let loop ([count 1])
+    (printf "looping ~a\n" count)
+    (loop (add1 count))))
+
+(define (next-line-it lst)
+  (let ((line (read-line (current-input-port) 'any)))
+    (unless (eof-object? line)
+      (displayln line)
+      (cons lst line)
+      (next-line-it lst)
+      )
+    )
+  lst
+  )
+
+
+#|
+(define (reader)
+  (let loop ([lst '()])
+    (display lst)
+    (loop (cons lst (read-line (current-input-port))))))
+
+(let stdin->list ((res  '()))
+  (let [(line (read-line (current-input-port)))]
+    (if (eof-object? line)
+        res
+        (stdin->list (cons res line)
+                     ))))
+(require 2htdp/batch-io)
+(read-lines 'stdin)
+
+|#
+
+(define (reader func)
+  (let stdin->list ((res  '()))
+    (let [(line (read-line (current-input-port)))]
+      (if (eof-object? line)
+          #t
+          (stdin->list (func line))
+                       ))))
+
+#|
+
+(reader (lambda (line)
+          (display (string-append "-" line))))
+
+|#
+
+
+(define-syntax-rule (argf_each line body)
+  (reader (lambda (line)
+            body)))
+
+(argf_each line
+  (write (string-append "-" line)))

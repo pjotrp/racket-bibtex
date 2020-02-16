@@ -76,9 +76,9 @@
 |#
 
 
-(define-syntax-rule (argf_each line body)
+(define-syntax-rule (argf/each line body)
   (reader (lambda (line)
             body)))
 
-(argf_each line
+(argf/each line
   (write (string-append "-" line)))

@@ -2,15 +2,20 @@
 
 (require json)
 
+#|
 (define verbose-mode (make-parameter #f))
 
-(define file-to-compile
+(define files-to-compile
   (command-line
    #:program "bibtex-conv"
    #:once-each
    [("-v" "--verbose") "Compile with verbose messages"
                        (verbose-mode #t)]
+   #:args args args
 ))
+
+(display files-to-compile)
+|#
 
 ;; (let [(buf (read-bytes 100))]
 ;;   (display buf))
@@ -74,7 +79,6 @@
 (reader (lambda (line)
           (display (string-append "-" line))))
 
-|#
 
 (define (reader func)
   (let loop ()
@@ -85,10 +89,48 @@
             (loop))
           #f
           ))))
+|#
+
+(define (other-files func)
+  (for ([fn (current-command-line-arguments)])
+    (call-with-input-file fn
+      (lambda (port)
+        (let loop ()
+          (let [(line (read-line port))]
+            (if (not (eof-object? line))
+                (begin
+                  (func line)
+                  (loop))
+            #t
+  )))))))
+
+(define (reader func)
+  (let loop ()
+    (let [(line2 (read-line (current-input-port)))]
+      (if (not (eof-object? line2))
+          (begin
+            (func line2)
+            (loop))
+          (other-files func)
+          ))))
 
 (define-syntax-rule (argf/each line body)
   (reader (lambda (line)
             body)))
 
+
+(define-syntax-rule (argf/each2 line body)
+  (let loop ()
+    (let [(line (read-line (current-input-port)))]
+      (if (not (eof-object? line))
+          (begin
+            body
+            (loop))
+          #f
+          ))))
+
+
 (argf/each line
   (write (string-append "-" line)))
+
+;; "-a""-b""-c"#f

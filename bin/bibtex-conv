@@ -46,13 +46,21 @@
 
 ;; Try again using streams
 
-(for ([line (in-lines (current-input-port))])
+(define (reader func)
+  (for ([line (in-lines (current-input-port))])
+    (write (string-append "-" line)))
+  (for ([fn (current-command-line-arguments)])
+    (call-with-input-file fn
+      (lambda (port)
+        (for ([line (in-lines port)])
+          (write (string-append "-" line)))
+        ))))
+
+(define-syntax-rule (argf/each1 line body)
+  (reader (lambda (line)
+            body)))
+
+(argf/each line
   (write (string-append "-" line)))
-(for ([fn (current-command-line-arguments)])
-  (call-with-input-file fn
-    (lambda (port)
-      (for ([line (in-lines port)])
-        (write (string-append "-" line)))
-)))
 
 ;; "-a""-b""-c"#f

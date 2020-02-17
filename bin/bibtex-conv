@@ -17,7 +17,7 @@
 (display files-to-compile)
 |#
 
-(define (reader func)
+(define (reader1 func)
   (define (read-lines port func)
     (let loop ()
       (let [(line (read-line port))]
@@ -37,11 +37,22 @@
           (read-lines port func)
     )))))
 
-(define-syntax-rule (argf/each line body)
-  (reader (lambda (line)
+(define-syntax-rule (argf/each1 line body)
+  (reader1 (lambda (line)
             body)))
 
-(argf/each line
+; (argf/each1 line
+;  (write (string-append "-" line)))
+
+;; Try again using streams
+
+(for ([line (in-lines (current-input-port))])
   (write (string-append "-" line)))
+(for ([fn (current-command-line-arguments)])
+  (call-with-input-file fn
+    (lambda (port)
+      (for ([line (in-lines port)])
+        (write (string-append "-" line)))
+)))
 
 ;; "-a""-b""-c"#f

@@ -112,11 +112,9 @@
           (read-lines port func)
     )))))
 
-
 (define-syntax-rule (argf/each line body)
   (reader (lambda (line)
             body)))
-
 
 (define-syntax-rule (argf/each2 line body)
   (let loop ()

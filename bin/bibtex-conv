@@ -111,9 +111,8 @@ A JSON record
 
 (for ([(id bib) bibentries])
   (display id)
-  ;; (display (hash-ref bib 'DOI))
   (display (match bib
-             [('DOI doi) doi]
-             ))
+             [(hash-table ('DOI doi)) doi]
+             [_ ""]))
   (newline)
   )

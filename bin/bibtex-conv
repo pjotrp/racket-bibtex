@@ -155,7 +155,11 @@ A JSON record
         )
   )
 
-(for ([(bib) (sorted-list short-list)])
+(define (filtered list)
+  list
+  )
+
+(for ([(bib) (filtered-list (sorted-list short-list))])
   (display "- ")
   (let [(title (hash-ref bib 'title))]
     (display (url (remove-nocase title) (hash-ref bib 'URL #f))))

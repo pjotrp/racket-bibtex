@@ -103,8 +103,10 @@ A JSON record
 
 |#
 
-(let [(records (read-json))]
-  (for ([(entry) records])
-    (display (hash-ref entry 'id))
-    (newline)
-    ))
+(define bibentries
+  (let [(records (read-json))]
+    (for/hash ([(rec) records])
+      (values (hash-ref rec 'id) rec)
+      )))
+
+(hash-ref bibentries "Arends:2016")

@@ -4,8 +4,8 @@
 (require json)
 (require srfi/1) ;; for drop-right
 
-#|
 (define verbose-mode (make-parameter #f))
+(define keyword-mode (make-parameter #f))
 
 (define files-to-compile
   (command-line
@@ -13,53 +13,18 @@
    #:once-each
    [("-v" "--verbose") "Compile with verbose messages"
                        (verbose-mode #t)]
+   [("-k" "--keyword") kw "Filter on keyword"
+                       (keyword-mode kw)]
    #:args args args
 ))
 
-(display files-to-compile)
-
-(define (reader func)
-  (for ([line (in-lines (current-input-port))])
-    (func line))
-  (for ([fn (current-command-line-arguments)])
-    (call-with-input-file fn
-      (lambda (port)
-        (for ([line (in-lines port)])
-          (func line))
-        ))))
-
-(define-syntax-rule (argf/each line body)
-  (reader (lambda (line)
-            body)))
-
-(argf/each line
-  (write (string-append "-" line)))
-|#
-
-;; "-a""-b""-c"#f
-
 #|
-
-(for ([line (in-port read-line)])
-  (display line)
-  (newline)
-  )
-
-
-
-|#
-
-;; (string->jsexpr (port->string))
-
-#|
-
 A JSON record
 
 [
   {
     "DOI": "10.1007/978-1-4939-9074-0_21",
     "URL": "http://www.ncbi.nlm.nih.gov/pubmed/31278680",
-    "abstract": "Systems genetics combines high-throughput genomic data with genetic analysis. In this chapter, we review and discuss application of systems genetics in the context of evolutionary studies, in which high-throughput molecular technologies are being combined with quantitative trait locus (QTL) analysis in segregating populations.The recent explosion of high-throughput data-measuring thousands of RNAs, proteins, and metabolites, using deep sequencing, mass spectrometry, chromatin, methyl-DNA immunoprecipitation, etc.-allows the dissection of causes of genetic variation underlying quantitative phenotypes of all types. To deal with the sheer amount of data, powerful statistical tools are needed to analyze multidimensional relationships and to extract valuable information and new modes and mechanisms of changes both within and between species. In the context of evolutionary computational biology, a well-designed experiment and the right population can help dissect complex traits likely to be under selection using proven statistical methods for associating phenotypic variation with chromosomal locations.Recent evolutionary expression QTL (eQTL) studies focus on gene expression adaptations, mapping the gene expression landscape, and, tentatively, define networks of transcripts and proteins that are jointly modulated sets of eQTL networks. Here, we discuss the possibility of introducing an evolutionary “prior” in the form of gene families displaying evidence of positive selection, and using that prior in the context of an eQTL experiment for elucidating host-pathogen protein-protein interactions.Here we review one exemplar evolutionairy eQTL experiment and discuss experimental design, choice of platforms, analysis methods, scope, and interpretation of results. In brief we highlight how eQTL are defined; how they are used to assemble interacting and causally connected networks of RNAs, proteins, and metabolites; and how some QTLs can be efficiently converted to reasonably well-defined sequence variants.",
     "author": [
       {
         "family": "Prins",
@@ -68,18 +33,6 @@ A JSON record
       {
         "family": "Smant",
         "given": "G."
-      },
-      {
-        "family": "Arends",
-        "given": "D."
-      },
-      {
-        "family": "Mulligan",
-        "given": "M. K."
-      },
-      {
-        "family": "Williams",
-        "given": "R. W."
       },
       {
         "family": "Jansen",
@@ -134,10 +87,10 @@ A JSON record
         ""))
   )
 
-(define (pretty2 bib id [pre ""])
+(define (pretty2 bib id [pre ""] [post ""])
   (let [(s (hash-ref bib id #f))]
     (if (string? s)
-        (string-append pre s)
+        (string-append pre s post)
         ""))
   )
 
@@ -155,27 +108,41 @@ A JSON record
         )
   )
 
-(define (filtered list)
-  list
+(define (filtered-list list)
+  (if (string? (keyword-mode))
+      (filter (lambda (b) (string-contains? (hash-ref b 'keyword) (keyword-mode)))
+              list)
+      list
+      ))
+
+(define (make-doi doi)
+  (string-append "https://doi.org/" doi)
   )
 
 (for ([(bib) (filtered-list (sorted-list short-list))])
-  (display "- ")
-  (let [(title (hash-ref bib 'title))]
-    (display (url (remove-nocase title) (hash-ref bib 'URL #f))))
+  (display "1. ")
+  (let* [(title (hash-ref bib 'title))
+         (url1  (hash-ref bib 'URL #f))
+         (url2  (if url1
+                    url1
+                    (make-doi (hash-ref bib 'DOI #f))))
+        ]
+    (display (url (remove-nocase title) url2)))
   (display " by ")
   (let [(auths (authors (hash-ref bib 'author)))]
     (display (string-join (drop-right auths 1) ", "))
     (display " and ")
     (display (last auths))
     )
-  (display (pretty2 bib 'container-title ", "))
-  (display " (")
+  (display (pretty2 bib 'container-title ", @@html:<span class=\"journal\">@@"
+                    "@@html:</span>@@"))
+  (display " (@@html:<span class=\"year\">@@")
   (display (year bib))
-  (display ")")
+  (display "@@html:</span>@@)")
   (display (pretty2 bib 'volume " Vol "))
   (display (pretty2 bib 'page " p. "))
-  (display (pretty2 bib 'DOI ", DOI:"))
+  (display (pretty2 bib 'DOI ", DOI: "))
+  (display (pretty2 bib 'note " (*" "*)"))
   #|
   (display (match bib
              [(hash-table ('DOI doi)) doi]

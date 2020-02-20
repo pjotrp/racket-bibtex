@@ -109,4 +109,6 @@ A JSON record
       (values (hash-ref rec 'id) rec)
       )))
 
-(hash-ref bibentries "Arends:2016")
+(let [(bib) (hash-ref bibentries "Arends:2016")]
+  bib
+  )

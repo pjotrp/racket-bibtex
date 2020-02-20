@@ -2,6 +2,7 @@
 #lang racket
 
 (require json)
+(require srfi/1) ;; for drop-right
 
 #|
 (define verbose-mode (make-parameter #f))
@@ -104,15 +105,66 @@ A JSON record
 |#
 
 (define bibentries
+  ;; Convert bibentries to ID based hash
+  ;; FIXME: what to do with duplicates?
   (let [(records (read-json))]
     (for/hash ([(rec) records])
       (values (hash-ref rec 'id) rec)
       )))
 
+(define (remove-nocase s)
+  (string-replace (string-replace s "<span class=\"nocase\">" "") "</span>" ""))
+
+(define (authors lst)
+  ;; "Meh"
+  (for/list ([author lst])
+    (string-append (hash-ref author 'given "") " " (hash-ref author 'family ""))
+    ))
+
+(define (url text uri)
+  (if uri
+      (string-append "[[" uri "][" text "]]")
+      text
+      ))
+
+(define (pretty bib id #:prefix pre)
+  (let [(s (hash-ref bib id #f))]
+    (if (string? s)
+        s
+        ""))
+  )
+
+(define (pretty2 bib id [pre ""])
+  (let [(s (hash-ref bib id #f))]
+    (if (string? s)
+        (string-append pre s)
+        ""))
+  )
+
+(define (year bib)
+  (first (first (hash-ref (hash-ref bib 'issued "") 'date-parts))))
+
 (for ([(id bib) bibentries])
-  (display id)
+  (display "- ")
+  (let [(title (hash-ref bib 'title))]
+    (display (url (remove-nocase title) (hash-ref bib 'URL #f))))
+  (display " by ")
+  (let [(auths (authors (hash-ref bib 'author)))]
+    (display (string-join (drop-right auths 1) ", "))
+    (display " and ")
+    (display (last auths))
+    )
+  (display (pretty2 bib 'container-title ", "))
+  (display " (")
+  (display (year bib))
+  (display ")")
+  (display (pretty2 bib 'volume " Vol "))
+  (display (pretty2 bib 'page " p. "))
+  (display (pretty2 bib 'DOI ", DOI:"))
+  #|
   (display (match bib
              [(hash-table ('DOI doi)) doi]
              [_ ""]))
+  |#
   (newline)
   )

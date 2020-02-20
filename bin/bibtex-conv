@@ -104,9 +104,9 @@ A JSON record
 
 |#
 
-(define bibentries
+(define single-bibentries
   ;; Convert bibentries to ID based hash
-  ;; FIXME: what to do with duplicates?
+  ;; removes duplicates and turn back to list
   (let [(records (read-json))]
     (for/hash ([(rec) records])
       (values (hash-ref rec 'id) rec)
@@ -144,7 +144,18 @@ A JSON record
 (define (year bib)
   (first (first (hash-ref (hash-ref bib 'issued "") 'date-parts))))
 
-(for ([(id bib) bibentries])
+(define short-list
+  (for/list ([(id bib) single-bibentries])
+    bib))
+
+(define (sorted-list list)
+  (sort list
+        >
+        #:key (lambda (b) (year b))
+        )
+  )
+
+(for ([(bib) (sorted-list short-list)])
   (display "- ")
   (let [(title (hash-ref bib 'title))]
     (display (url (remove-nocase title) (hash-ref bib 'URL #f))))

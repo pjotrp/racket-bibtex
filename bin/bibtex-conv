@@ -121,11 +121,14 @@ A JSON record
 (define (filtered-list list)
   (cond
     [(string? (keyword-mode))
-      (filter (lambda (b) (string-contains? (hash-ref b 'keyword "xxx") (keyword-mode)))
-              list)]
-;    [(string? (eval-string))
-;       (filter (lambda (b)(eval (read (open-input-string (eval-string)))) )
-;              list]
+     (filter (lambda (b)
+               (string-contains? (hash-ref b 'keyword "xxx") (keyword-mode)))
+             list)]
+    [(string? (eval-string))
+     (filter (lambda (b)
+               (let [(ns (make-base-namespace))]
+                 (eval (read (open-input-string "#f")) ns)))
+               list)]
     [else list]
       ))
 
@@ -168,6 +171,3 @@ A JSON record
   |#
   (newline)
   )
-
-(let [(ns (make-base-namespace))]
-  (eval (read (open-input-string "(display \"test\")")) ns))

@@ -169,7 +169,7 @@ A JSON record
   (newline)
   )
 
-(read (open-input-string "(+ 1 2)"))
+(read (open-input-string "'(+ 1 2)"))
 
 (let [(ns (make-base-namespace))]
   (eval '(+ 1 2) ns))

@@ -6,6 +6,7 @@
 
 (define verbose-mode (make-parameter #f))
 (define keyword-mode (make-parameter #f))
+(define pjotr-mode   (make-parameter #f))
 (define eval-string  (make-parameter #f))
 
 (define files-to-compile
@@ -17,7 +18,9 @@
    [("-k" "--keyword") kw "Filter on keyword"
                        (keyword-mode kw)]
    [("-e" "--eval") e "Filter on s-exp"
-                       (eval-string e)]
+                    (eval-string e)]
+   [("-p" "--pjotr") "Author is Pjotr"
+                     (pjotr-mode #t)]
    #:args args args
 ))
 
@@ -74,12 +77,12 @@ A JSON record
 (define (authors lst)
   ;; "Meh"
   (for/list ([author lst])
-    (let* [(given  (string-replace (hash-ref author 'given "") " " ""))
+    (let* [(given  (hash-ref author 'given ""))
            (family (hash-ref author 'family ""))
-           (fullname (string-append given family))
+           (fullname (string-append given " " family))
            ]
       (match fullname
-        ["P.Prins"   (string-append "_" fullname "_")]
+        ["P. Prins"   (string-append "_" fullname "_")]
         [_ fullname]
         )
     )))
@@ -124,10 +127,24 @@ A JSON record
      (filter (lambda (b)
                (string-contains? (hash-ref b 'keyword "xxx") (keyword-mode)))
              list)]
+    [(pjotr-mode)
+     (filter (lambda (b)
+               (let [(auths (authors (hash-ref b 'author)))]
+                 (findf
+                  (lambda (a)(string-contains? a "Prins") ) auths))
+                 )
+             list)]
     [(string? (eval-string))
      (filter (lambda (b)
                (let [(ns (make-base-namespace))]
-                 (eval (read (open-input-string "(string-contains? (hash-ref b 'keyword \"xxx\") \"book\")")) ns)))
+                 (parameterize [(current-namespace ns)]
+                   (namespace-require 'racket/string)
+;;                   (display b)
+                   (eval
+                    (read
+                     (open-input-string
+                      "#'(string-contains? (hash-ref #,b 'keyword \"xxx\") \"book\")"
+                      )) ns))))
                list)]
     [else list]
       ))
@@ -171,3 +188,12 @@ A JSON record
   |#
   (newline)
   )
+
+#|
+(display "----")
+(let [(ns (make-base-namespace))
+      (s "test")]
+  (parameterize [(current-namespace ns)]
+    (let [(s1 s)]
+      (eval (read (open-input-string "(display s1)")) ns))))
+|#

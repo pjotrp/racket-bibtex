@@ -110,7 +110,7 @@ A JSON record
 
 (define (filtered-list list)
   (if (string? (keyword-mode))
-      (filter (lambda (b) (string-contains? (hash-ref b 'keyword) (keyword-mode)))
+      (filter (lambda (b) (string-contains? (hash-ref b 'keyword "xxx") (keyword-mode)))
               list)
       list
       ))
@@ -139,8 +139,9 @@ A JSON record
   (display " (@@html:<span class=\"year\">@@")
   (display (year bib))
   (display "@@html:</span>@@)")
-  (display (pretty2 bib 'volume " Vol "))
+  (display (pretty2 bib 'volume " Vol"))
   (display (pretty2 bib 'page " p. "))
+  (display (pretty2 bib 'edition " (" " edition)"))
   (display (pretty2 bib 'DOI ", DOI: "))
   (display (pretty2 bib 'note " (*" "*)"))
   #|

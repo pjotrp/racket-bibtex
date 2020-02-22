@@ -71,8 +71,15 @@ A JSON record
 (define (authors lst)
   ;; "Meh"
   (for/list ([author lst])
-    (string-append (hash-ref author 'given "") " " (hash-ref author 'family ""))
-    ))
+    (let* [(given  (string-replace (hash-ref author 'given "") " " ""))
+           (family (hash-ref author 'family ""))
+           (fullname (string-append given family))
+           ]
+      (match fullname
+        ["P.Prins"   (string-append "_" fullname "_")]
+        [_ fullname]
+        )
+    )))
 
 (define (url text uri)
   (if uri

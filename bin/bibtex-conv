@@ -6,6 +6,7 @@
 
 (define verbose-mode (make-parameter #f))
 (define keyword-mode (make-parameter #f))
+(define eval-string  (make-parameter #f))
 
 (define files-to-compile
   (command-line
@@ -15,6 +16,8 @@
                        (verbose-mode #t)]
    [("-k" "--keyword") kw "Filter on keyword"
                        (keyword-mode kw)]
+   [("-e" "--eval") e "Filter on s-exp"
+                       (eval-string e)]
    #:args args args
 ))
 
@@ -116,15 +119,22 @@ A JSON record
   )
 
 (define (filtered-list list)
-  (if (string? (keyword-mode))
+  (cond
+    [(string? (keyword-mode))
       (filter (lambda (b) (string-contains? (hash-ref b 'keyword "xxx") (keyword-mode)))
-              list)
-      list
+              list)]
+;    [(string? (eval-string))
+;       (filter (lambda (b)(eval (read (open-input-string (eval-string)))) )
+;              list]
+    [else list]
       ))
 
 (define (make-doi doi)
   (string-append "https://doi.org/" doi)
   )
+
+
+; (display (eval (read (open-input-string "(+ 1 2)"))))
 
 (for ([(bib) (filtered-list (sorted-list short-list))])
   (display "1. ")
@@ -158,3 +168,10 @@ A JSON record
   |#
   (newline)
   )
+
+(read (open-input-string "(+ 1 2)"))
+
+(let [(ns (make-base-namespace))]
+  (eval '(+ 1 2) ns))
+
+;  (eval (read (open-input-string "(+ 1 2)") ns)))

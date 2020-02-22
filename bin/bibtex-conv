@@ -127,7 +127,7 @@ A JSON record
     [(string? (eval-string))
      (filter (lambda (b)
                (let [(ns (make-base-namespace))]
-                 (eval (read (open-input-string "#f")) ns)))
+                 (eval (read (open-input-string "(string-contains? (hash-ref b 'keyword \"xxx\") \"book\")")) ns)))
                list)]
     [else list]
       ))

@@ -169,6 +169,5 @@ A JSON record
   (newline)
   )
 
-
 (let [(ns (make-base-namespace))]
-  (eval (read (open-input-string "(+ 1 2)")) ns))
+  (eval (read (open-input-string "(display \"test\")")) ns))

@@ -79,7 +79,8 @@ A JSON record
   (string-replace (string-replace s "<span class=\"nocase\">" "") "</span>" ""))
 
 (define (form-author given family)
-  (string-append given " " family)
+  ;; (string-append given " " family)
+  (string-append family " " given)
   )
 
 (define (authors lst)

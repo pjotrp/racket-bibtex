@@ -89,7 +89,7 @@ A JSON record
 
 (define (form-author given family)
   ;; (string-append given " " family)
-  (string-append family " " (form-given given))
+  (string-append family "~" (form-given given))
   )
 
 (define (authors lst)
@@ -100,9 +100,9 @@ A JSON record
            (fullname (form-author given family))
            ]
       (match fullname
-        [(or "P. Prins" "Prins P")
+        [(or "P. Prins" "Prins P" "Prins~P")
          (if (latex-mode)
-                          (string-append "\\emph{" fullname "}")
+                          (string-append "\\textsc{" fullname "}")
                           (string-append "_" fullname "_"))
                           ]
         [_ fullname]
@@ -110,10 +110,10 @@ A JSON record
     )))
 
 (define (reduce-authors lst)
-  ;; limit authors to 3 if more than 16
+  ;; limit authors to 4 if more than 16
   (let [(as (authors lst))]
     (if (> (length as) 16)
-        (append (take as 3) '("\\emph{et al.}"))
+        (append (take as 4) '("\\emph{et al.}"))
         as)
   ))
 
@@ -203,13 +203,14 @@ A JSON record
       (display (pretty (year bib) " (" ") "))
       (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
       (display (pretty2 bib 'container-title " \\uline{"
-                        "}, "))
-      (display (pretty2 bib 'volume " {\\bf " "}"))
+                        "} "))
+      (display (pretty2 bib 'volume " " ""))
+      (display (pretty2 bib 'issue "(" ")"))
       (display (pretty2 bib 'page " p.~"))
       (display (pretty2 bib 'edition " (" " edition)"))
       (display (pretty2 bib 'note " {\\bf (" ")}"))
-      (if url1
-          (display (pretty url1 "~\\href{" "}{\\ding{234}}"))
+      (if url2
+          (display (pretty url2 "~\\href{" "}{\\ding{234}}"))
           #t
           )
       (display "\n\n")

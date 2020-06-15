@@ -192,6 +192,7 @@ A JSON record
            (url2  (if url1
                       url1
                       (make-doi (hash-ref bib 'DOI #f))))
+           (journal (hash-ref bib 'container-title))
            ]
       (display "\\item ")
       (let [(auths (reduce-authors (hash-ref bib 'author)))]
@@ -202,8 +203,12 @@ A JSON record
               (display (string-append " and " lst)))))
       (display (pretty (year bib) " (" ") "))
       (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
-      (display (pretty2 bib 'container-title " \\uline{"
-                        "} "))
+      ;; (display (string-append "<" journal ">"))
+      (if
+       (for/or ([j '("Nature" "Nat Rev Genet" "Nat Biotechnol" "Genetics" "PLoS Comput Biol" "PLoS Genet" "Cell Syst" "Nucleic Acids Res")] #:when (equal? journal j)) 1)
+        (display (pretty2 bib 'container-title " \\hijournal{" "} "))
+        (display (pretty2 bib 'container-title " \\journal{" "} "))
+        )
       (display (pretty2 bib 'volume " " ""))
       (display (pretty2 bib 'issue "(" ")"))
       (display (pretty2 bib 'page " p.~"))

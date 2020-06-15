@@ -78,9 +78,18 @@ A JSON record
   ;; Remove introduced span statements
   (string-replace (string-replace s "<span class=\"nocase\">" "") "</span>" ""))
 
+(define (form-given given)
+  (string-join
+   (for/list ([author (regexp-split #rx"[ .]+" given)])
+     (if (> (string-length author) 1)
+         (substring author 0 1)
+         author
+         ))
+   ""))
+
 (define (form-author given family)
   ;; (string-append given " " family)
-  (string-append family " " given)
+  (string-append family " " (form-given given))
   )
 
 (define (authors lst)

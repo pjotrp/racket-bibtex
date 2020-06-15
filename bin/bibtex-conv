@@ -113,7 +113,7 @@ A JSON record
   ;; limit authors to 3 if more than 8
   (let [(as (authors lst))]
     (if (> (length as) 8)
-        (take as 3)
+        (list* (take as 3) "et al.")
         as)
   ))
 

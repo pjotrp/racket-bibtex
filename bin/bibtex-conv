@@ -78,15 +78,22 @@ A JSON record
   ;; Remove introduced span statements
   (string-replace (string-replace s "<span class=\"nocase\">" "") "</span>" ""))
 
+(define (form-author given family)
+  (string-append given " " family)
+  )
+
 (define (authors lst)
-  ;; Org mode style underline matching name
+  ;; returns a list of formed authors
   (for/list ([author lst])
     (let* [(given  (hash-ref author 'given ""))
            (family (hash-ref author 'family ""))
-           (fullname (string-append given " " family))
+           (fullname (form-author given family))
            ]
       (match fullname
-        ["P. Prins"   (string-append "_" fullname "_")]
+        ["P. Prins"   (if (latex-mode)
+                          (string-append "{\\bf " fullname "}")
+                          (string-append "_" fullname "_"))
+                          ]
         [_ fullname]
         )
     )))
@@ -164,7 +171,12 @@ A JSON record
   (for ([(bib) (filtered-list (sorted-list short-list))])
     (let* [(url1  (hash-ref bib 'URL #f))]
       (display "\\item ")
-      (display (pretty (year bib) "(" ")"))
+      (let [(auths (authors (hash-ref bib 'author)))]
+        (display (string-join (drop-right auths 1) ", "))
+        (display " and ")
+        (display (last auths))
+        )
+      (display (pretty (year bib) " (" ")"))
       (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
       (display (pretty2 bib 'container-title " \\uline{"
                         "}, "))

@@ -102,12 +102,20 @@ A JSON record
       (match fullname
         [(or "P. Prins" "Prins P")
          (if (latex-mode)
-                          (string-append "{\\bf " fullname "}")
+                          (string-append "\\emph{" fullname "}")
                           (string-append "_" fullname "_"))
                           ]
         [_ fullname]
         )
     )))
+
+(define (reduce-authors lst)
+  ;; limit authors to 3 if more than 8
+  (let [(as (authors lst))]
+    (if (> (length as) 8)
+        (take as 3)
+        as)
+  ))
 
 (define (url text uri)
   ;; Org mode style URL
@@ -186,7 +194,7 @@ A JSON record
                       (make-doi (hash-ref bib 'DOI #f))))
            ]
       (display "\\item ")
-      (let [(auths (authors (hash-ref bib 'author)))]
+      (let [(auths (reduce-authors (hash-ref bib 'author)))]
         (display (string-join (drop-right auths 1) ", "))
         (display " and ")
         (display (last auths))

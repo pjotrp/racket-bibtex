@@ -31,8 +31,6 @@ pandoc-citeproc --bib2json biblio.bib|bibtex-conv --keyword=pjotr
 
 generates a list like
 
-
-
 * Copyright
 
 Copyright (c) 2020 Pjotr Prins.  This code is published under the

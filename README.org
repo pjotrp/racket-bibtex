@@ -3,6 +3,8 @@
 
 * Table of Contents                                                     :TOC:
  - [[#bibtex-conv][Bibtex-conv]]
+ - [[#install][Install]]
+   - [[#using-gnu-guix][Using GNU Guix]]
  - [[#copyright][Copyright]]
 
 * Bibtex-conv
@@ -26,10 +28,49 @@ pages etc. In earlier days I used the Ruby bibtex parser, but with
 pandoc there is no longer a need for that. E.g.
 
 #+begin_src sh
-pandoc-citeproc --bib2json biblio.bib|bibtex-conv --keyword=pjotr
+pandoc-citeproc --bib2json biblio.bib|bibtex-conv --keyword group
 #+end_src
 
-generates a list like
+generates Org-mode style output like
+
+#+begin_example
+1. [[http://www.ncbi.nlm.nih.gov/pubmed/31278683][Scalable Workflows and
+   Reproducible Data Analysis for Genomics]] by F. Strozzi, R. Janssen,
+   R. Wurmus, M. R. Crusoe, G. Githinji, P. Di Tommaso, D. Belhachemi,
+   S. Moller, G. Smant, J. Ligt and _P. Prins_,
+   @@html:<span class="journal">@@Methods Mol Biol@@html:</span>@@
+   (@@html:<span class="year">@@2019@@html:</span>@@) Vol 1910
+   p. 723-745, DOI: 10.1007/978-1-4939-9074-0_24
+#+end_example
+
+which can be turned into HTML via emacs org-mode. To generate LaTeX
+directly it is also possible to use the --latex switch
+
+#+begin_src sh
+pandoc-citeproc --bib2json biblio.bib|bibtex-conv --keyword group --latex
+#+end_src
+
+renders
+
+#+begin_src tex
+\item Arends D, {\ul Prins P}, Jansen RC, Broman KW (2010),
+  \emph{R/qtl: high-throughput multiple QTL mapping.}
+  \uline{Bioinformatics}, {\bf 26}(23), 2990-2992.
+#+end_src
+
+* Install
+
+Dependencies:
+
+1. racket
+2. pandoc
+3. pandoc-citeproc
+
+** Using GNU Guix
+
+#+begin_src sh
+~/opt/guix/bin/guix environment -C --ad-hoc racket ghc-pandoc ghc-pandoc-citeproc
+#+end_src
 
 * Copyright
 

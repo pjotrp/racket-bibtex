@@ -5,6 +5,7 @@
 (require srfi/1) ;; for drop-right
 
 (define verbose-mode (make-parameter #f))
+(define latex-mode   (make-parameter #f))
 (define keyword-mode (make-parameter #f))
 (define pjotr-mode   (make-parameter #f))
 (define eval-string  (make-parameter #f))
@@ -15,6 +16,8 @@
    #:once-each
    [("-v" "--verbose") "Compile with verbose messages"
                        (verbose-mode #t)]
+   [("-l" "--latex") "LaTeX mode (default is org-mode)"
+                     (latex-mode #t)]
    [("-k" "--keyword") kw "Filter on keyword"
                        (keyword-mode kw)]
    [("-e" "--eval") e "Filter on s-exp"
@@ -72,10 +75,11 @@ A JSON record
       )))
 
 (define (remove-nocase s)
+  ;; Remove introduced span statements
   (string-replace (string-replace s "<span class=\"nocase\">" "") "</span>" ""))
 
 (define (authors lst)
-  ;; "Meh"
+  ;; Org mode style underline matching name
   (for/list ([author lst])
     (let* [(given  (hash-ref author 'given ""))
            (family (hash-ref author 'family ""))
@@ -88,19 +92,22 @@ A JSON record
     )))
 
 (define (url text uri)
+  ;; Org mode style URL
   (if uri
       (string-append "[[" uri "][" text "]]")
       text
       ))
 
-(define (pretty bib id #:prefix pre)
-  (let [(s (hash-ref bib id #f))]
-    (if (string? s)
-        s
-        ""))
-  )
+(define (pretty s [pre ""] [post ""])
+  ;; pretty wraps an item in pre and post strings
+  (string-append pre
+          (if (number? s)
+              (number->string s)
+              s)
+              post))
 
 (define (pretty2 bib id [pre ""] [post ""])
+  ;; pretty2 wraps an item in pre and post strings
   (let [(s (hash-ref bib id #f))]
     (if (string? s)
         (string-append pre s post)
@@ -153,41 +160,62 @@ A JSON record
   (string-append "https://doi.org/" doi)
   )
 
+(define (latex-output short-list)
+  (for ([(bib) (filtered-list (sorted-list short-list))])
+    (let* [(url1  (hash-ref bib 'URL #f))]
+      (display "\\item ")
+      (display (pretty (year bib) "(" ")"))
+      (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
+      (display (pretty2 bib 'container-title " \\uline{"
+                        "}, "))
+      (display (pretty2 bib 'volume " {\\bf " "}"))
+      (display (pretty2 bib 'page " p.~"))
+      (display (pretty2 bib 'edition " (" " edition)"))
+      (if url1
+          (display (pretty url1 "~\\href{" "}{\\ding{234}}"))
+          #t
+          )
+      (display "\n\n")
+      )))
 
-; (display (eval (read (open-input-string "(+ 1 2)"))))
+(define (org-output short-list)
+  (for ([(bib) (filtered-list (sorted-list short-list))])
+    (display "1. ")
+    (let* [(title (hash-ref bib 'title))
+           (url1  (hash-ref bib 'URL #f))
+           (url2  (if url1
+                      url1
+                      (make-doi (hash-ref bib 'DOI #f))))
+           ]
+      (display (url (remove-nocase title) url2)))
+    (display " by ")
+    (let [(auths (authors (hash-ref bib 'author)))]
+      (display (string-join (drop-right auths 1) ", "))
+      (display " and ")
+      (display (last auths))
+      )
+    (display (pretty2 bib 'container-title ", @@html:<span class=\"journal\">@@"
+                      "@@html:</span>@@"))
+    (display " (@@html:<span class=\"year\">@@")
+    (display (year bib))
+    (display "@@html:</span>@@)")
+    (display (pretty2 bib 'volume " Vol "))
+    (display (pretty2 bib 'page " p. "))
+    (display (pretty2 bib 'edition " (" " edition)"))
+    (display (pretty2 bib 'DOI ", DOI: "))
+    (display (pretty2 bib 'note " (*" "*)"))
+    #|
+    (display (match bib
+    [(hash-table ('DOI doi)) doi]
+    [_ ""]))
+    |#
+    (newline)
+    ))
 
-(for ([(bib) (filtered-list (sorted-list short-list))])
-  (display "1. ")
-  (let* [(title (hash-ref bib 'title))
-         (url1  (hash-ref bib 'URL #f))
-         (url2  (if url1
-                    url1
-                    (make-doi (hash-ref bib 'DOI #f))))
-        ]
-    (display (url (remove-nocase title) url2)))
-  (display " by ")
-  (let [(auths (authors (hash-ref bib 'author)))]
-    (display (string-join (drop-right auths 1) ", "))
-    (display " and ")
-    (display (last auths))
-    )
-  (display (pretty2 bib 'container-title ", @@html:<span class=\"journal\">@@"
-                    "@@html:</span>@@"))
-  (display " (@@html:<span class=\"year\">@@")
-  (display (year bib))
-  (display "@@html:</span>@@)")
-  (display (pretty2 bib 'volume " Vol "))
-  (display (pretty2 bib 'page " p. "))
-  (display (pretty2 bib 'edition " (" " edition)"))
-  (display (pretty2 bib 'DOI ", DOI: "))
-  (display (pretty2 bib 'note " (*" "*)"))
-  #|
-  (display (match bib
-             [(hash-table ('DOI doi)) doi]
-             [_ ""]))
-  |#
-  (newline)
-  )
+(if (latex-mode)
+    (latex-output short-list)
+    (org-output short-list))
+
 
 #|
 (display "----")

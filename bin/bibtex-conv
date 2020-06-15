@@ -100,7 +100,8 @@ A JSON record
            (fullname (form-author given family))
            ]
       (match fullname
-        ["P. Prins"   (if (latex-mode)
+        [(or "P. Prins" "Prins P")
+         (if (latex-mode)
                           (string-append "{\\bf " fullname "}")
                           (string-append "_" fullname "_"))
                           ]

@@ -110,10 +110,10 @@ A JSON record
     )))
 
 (define (reduce-authors lst)
-  ;; limit authors to 3 if more than 8
+  ;; limit authors to 3 if more than 16
   (let [(as (authors lst))]
-    (if (> (length as) 8)
-        (list* (take as 3) "et al.")
+    (if (> (length as) 16)
+        (append (take as 3) '("\\emph{et al.}"))
         as)
   ))
 
@@ -196,10 +196,11 @@ A JSON record
       (display "\\item ")
       (let [(auths (reduce-authors (hash-ref bib 'author)))]
         (display (string-join (drop-right auths 1) ", "))
-        (display " and ")
-        (display (last auths))
-        )
-      (display (pretty (year bib) " (" ")"))
+        (let [(lst (last auths))]
+          (if (string=? lst "\\emph{et al.}")
+              (display (string-append " " lst))
+              (display (string-append " and " lst)))))
+      (display (pretty (year bib) " (" ") "))
       (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
       (display (pretty2 bib 'container-title " \\uline{"
                         "}, "))

@@ -180,7 +180,11 @@ A JSON record
 
 (define (latex-output short-list)
   (for ([(bib) (filtered-list (sorted-list short-list))])
-    (let* [(url1  (hash-ref bib 'URL #f))]
+    (let* [(url1  (hash-ref bib 'URL #f))
+           (url2  (if url1
+                      url1
+                      (make-doi (hash-ref bib 'DOI #f))))
+           ]
       (display "\\item ")
       (let [(auths (authors (hash-ref bib 'author)))]
         (display (string-join (drop-right auths 1) ", "))
@@ -194,6 +198,7 @@ A JSON record
       (display (pretty2 bib 'volume " {\\bf " "}"))
       (display (pretty2 bib 'page " p.~"))
       (display (pretty2 bib 'edition " (" " edition)"))
+      (display (pretty2 bib 'note " {\\bf (" ")}"))
       (if url1
           (display (pretty url1 "~\\href{" "}{\\ding{234}}"))
           #t

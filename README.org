@@ -3,6 +3,7 @@
 
 * Table of Contents                                                     :TOC:
  - [[#bibtex-conv][Bibtex-conv]]
+ - [[#bib-file-manipulations][Bib file manipulations]]
  - [[#install][Install]]
    - [[#using-gnu-guix][Using GNU Guix]]
  - [[#copyright][Copyright]]
@@ -57,6 +58,11 @@ renders
   \emph{R/qtl: high-throughput multiple QTL mapping.}
   \uline{Bioinformatics}, {\bf 26}(23), 2990-2992.
 #+end_src
+
+* Bib file manipulations
+
+Note that both [[http://gerd-neugebauer.de/software/TeX/BibTool/bibtool.pdf][bibtool]] and biber have support for manipulating bib
+databases. Check those first before attempting to roll your own.
 
 * Install
 

@@ -66,6 +66,12 @@ A JSON record
 
 |#
 
+(define nbsp
+  (if (latex-mode)
+      "~"
+      "@@html:&nbsp;@@"
+  ))
+
 (define single-bibentries
   ;; Convert bibentries to ID based hash
   ;; removes duplicates and turn back to list
@@ -89,7 +95,7 @@ A JSON record
 
 (define (form-author given family)
   ;; (string-append given " " family)
-  (string-append family "~" (form-given given))
+  (string-append family nbsp (form-given given))
   )
 
 (define (authors lst)
@@ -248,7 +254,7 @@ A JSON record
     (display (pretty2 bib 'volume " Vol "))
     (display (pretty2 bib 'page " p. "))
     (display (pretty2 bib 'edition " (" " edition)"))
-    (display (pretty2 bib 'DOI ", DOI: "))
+    (display (pretty2 bib 'DOI ", DOI:"))
     (display (pretty2 bib 'note " (*" "*)"))
     #|
     (display (match bib

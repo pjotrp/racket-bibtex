@@ -11,6 +11,10 @@
 (define nih-biosketch-mode  (make-parameter #f))
 (define eval-string  (make-parameter #f))
 
+(define doi?         (make-parameter #f))
+(define url?         (make-parameter #f))
+(define pmid?        (make-parameter #f))
+
 (define files-to-compile
   (command-line
    #:program "bibtex-conv"
@@ -27,6 +31,12 @@
                      (pjotr-mode #t)]
    [("--nih") "NIH biosketch mode"
                      (nih-biosketch-mode #t)]
+   [("--doi")        "Add DOI output"
+                     (doi? #t)]
+   [("--url")        "Add URL output"
+                     (url? #t)]
+   [("--pmid")       "Add PMCID/PMID output"
+                     (pmid? #t)]
    #:args args args
 ))
 
@@ -109,10 +119,10 @@ A JSON record
            (fullname (form-author given family))
            ]
       (match fullname
-        [(or "Prins P" "Prins~P")
+        [(or "P. Prins" "Prins P" "Prins~P" "Prins@@html:&nbsp;@@P")
          (if (latex-mode)
-             "\\pprins"
-             (string-append "_" fullname "_")) ; markdown underline
+             (string-append "\\textsc{" fullname "}")
+             (string-append "@@html:<span class=\"pjotr\">@@" fullname "@@html:</span>@@"))
          ]
         [_ fullname]
         )
@@ -206,6 +216,10 @@ A JSON record
   (string-append "https://doi.org/" doi)
   )
 
+(define (make-pmid id)
+  ""
+)
+
 (define (latex-output short-list)
   (for ([(bib) (filtered-list (sorted-list short-list))])
     (let* [(url1  (hash-ref bib 'URL #f))
@@ -247,6 +261,15 @@ A JSON record
           (display (pretty2 bib 'note " {\\bf (" ")}")))
       (if (and url2 (not nih-biosketch-mode))
           (display (pretty url2 "~\\href{" "}{\\ding{234}}"))
+      (display (pretty2 bib 'note " {\\bf (" ")}"))
+      (if (pmid?)
+          (display (pretty2 bib 'PMID ", {\\bf PMID" "}"))
+          #t)
+      (if (doi?)
+          (display (pretty2 bib 'DOI ", DOI:~"))
+          #t)
+      (if (url?)
+          (display (pretty url2 "~\\bibhref{" "}"))
           #t
           )
       (display "\\prefs{")
@@ -288,6 +311,9 @@ A JSON record
     (if nih-biosketch-mode
         #t
         (display (pretty2 bib 'note " (*" "*)")))
+    (if (doi?)
+        (display (pretty2 bib 'DOI ", DOI: "))
+        #t)
     #|
     (display (match bib
     [(hash-table ('DOI doi)) doi]

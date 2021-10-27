@@ -8,6 +8,7 @@
 (define latex-mode   (make-parameter #f))
 (define keyword-mode (make-parameter #f))
 (define pjotr-mode   (make-parameter #f))
+(define nih-biosketch-mode  (make-parameter #f))
 (define eval-string  (make-parameter #f))
 
 (define files-to-compile
@@ -24,6 +25,8 @@
                     (eval-string e)]
    [("-p" "--pjotr") "Author is Pjotr"
                      (pjotr-mode #t)]
+   [("--nih") "NIH biosketch mode"
+                     (nih-biosketch-mode #t)]
    #:args args args
 ))
 
@@ -108,7 +111,7 @@ A JSON record
       (match fullname
         [(or "P. Prins" "Prins P" "Prins~P")
          (if (latex-mode)
-             (string-append "\\textsc{" fullname "}")
+             "\\pprins"
              (string-append "_" fullname "_"))
          ]
         [_ fullname]
@@ -199,6 +202,9 @@ A JSON record
                       url1
                       (make-doi (hash-ref bib 'DOI #f))))
            (journal (hash-ref bib 'container-title))
+           (pmcid  (hash-ref bib 'PMCID #f))
+           (pmid  (hash-ref bib 'PMID #f))
+           (doi  (hash-ref bib 'DOI #f))
            (keyword (hash-ref bib 'keyword ""))
            (first-author? (string-contains? keyword "first"))
            (last-author? (string-contains? keyword "last"))
@@ -210,23 +216,41 @@ A JSON record
           (if (string=? lst "\\emph{et al.}")
               (display (string-append " " lst))
               (display (string-append " and " lst)))))
-      (display (pretty (year bib) " (" ") "))
-      (display (remove-nocase (pretty2 bib 'title "\\emph{" "}.")))
+      (display (pretty (year bib) "\\pyear{" "}"))
+      (display (remove-nocase (pretty2 bib 'title "\\ptitle{" "}.")))
       ;; (display (string-append "<" journal ">"))
       (if
        (for/or ([j '("Nature" "Nat Rev Genet" "Nat Biotechnol" "Genetics" "PLoS Comput Biol" "PLoS Genet" "Cell Syst" "Nucleic Acids Res")] #:when (equal? journal j)) 1)
         (display (pretty2 bib 'container-title " \\hijournal{" "} "))
         (display (pretty2 bib 'container-title " \\journal{" "} "))
         )
-      (display (pretty2 bib 'volume " " ""))
-      (display (pretty2 bib 'issue "(" ")"))
-      (display (pretty2 bib 'page " p.~"))
+      (display (pretty2 bib 'volume "\\pvolume{" "}"))
+      (if (not nih-biosketch-mode)
+          (display (pretty2 bib 'issue "\\pissue{" "}"))
+          #t
+          )
+      (display (pretty2 bib 'page "\\pages{" "}"))
       (display (pretty2 bib 'edition " (" " edition)"))
-      (display (pretty2 bib 'note " {\\bf (" ")}"))
-      (if url2
+      (if nih-biosketch-mode
+          #t
+          (display (pretty2 bib 'note " {\\bf (" ")}")))
+      (if (and url2 (not nih-biosketch-mode))
           (display (pretty url2 "~\\href{" "}{\\ding{234}}"))
           #t
           )
+      (if (or pmcid pmid)
+          (begin
+            (display "\\prefs{")
+            (if pmid
+                (display (pretty2 bib 'PMID "\\pmid{" "}"))
+                #t)
+            (if pmcid
+                (display (pretty2 bib 'PMCID "\\pmcid{" "}"))
+                #t)
+            (display "}")
+            )
+          (display (pretty2 bib 'DOI "\\doi{" "}")))
+
       (display "\n\n")
       )))
 
@@ -255,7 +279,9 @@ A JSON record
     (display (pretty2 bib 'page " p. "))
     (display (pretty2 bib 'edition " (" " edition)"))
     (display (pretty2 bib 'DOI ", DOI:"))
-    (display (pretty2 bib 'note " (*" "*)"))
+    (if nih-biosketch-mode
+        #t
+        (display (pretty2 bib 'note " (*" "*)")))
     #|
     (display (match bib
     [(hash-table ('DOI doi)) doi]

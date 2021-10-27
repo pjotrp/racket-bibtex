@@ -1,19 +1,138 @@
+% To update
+%
+% ruby -I ~/iwrk/opensource/ruby/bioruby/lib/ ~/iwrk/opensource/ruby/bioruby-bioinformatics-impact/bin/pubmed2bib.rb 'prins pjotr [au]' > test.bib
+
+@techreport{Trotter:2020,
+  keywords     = "cv,genenetwork",
+       type = {preprint},
+       title = {Speeding up {eQTL} scans in the {BXD} population using {GPUs}},
+       url = {http://biorxiv.org/lookup/doi/10.1101/2020.06.22.153742},
+       abstract = {The BXD recombinant inbred strains of mice are an important reference population for sy
+tems biology and genetics that have been full sequenced and deeply phenotyped. To facilitate interactive u
+e of genotype-phenotype relations using many massive omics data sets for this and other segregating popula
+ions, we have developed new algorithms and code that enables near-real time whole genome QTL scans  for up
+to 1 million  traits. By using easily parallelizable operations including matrix multiplication, vectorize
+ operations, and element-wise operations, we have decreased run-time to a few seconds for large transcript
+me data sets. Our code is ideal for interactive web services, such as GeneNetwork.org. We used paralleliza
+ion of different CPU threads as well as GPUs. We found that the speed advantage of GPUs is dependent on pr
+blem size and shape (number of cases, number of genotypes, number of traits). Our results provide a path f
+r speeding up eQTL scans using linear mixed models (LMMs). Our implementation is in the Julia programming
+anguage.},
+       language = {en},
+       urldate = {2020-06-23},
+       institution = {Genetics},
+       author = {Trotter, Chelsea and Kim, Hyeonju and Farage, Gregory and Broman, Karl W. and Williams, Robert W and Prins, Pjotr and Sen, \'{S}aunak},
+       month = jun,
+       year = {2020},
+       doi = {10.1101/2020.06.22.153742}
+}
+
+
+
+@article{Garcia:2020,
+  pmid         = {32379758},
+  pmcid        = {7205200},
+  note         = "open access",
+  keywords     = "cv,bio4",
+  author       = {Garc\'{i}a, L. and Antezana, E. and Garc\'{i}a, A. and Bolton, E. and Jimenez, R. and Prins, P. and Banda, J. M. and Katayama, T.},
+  title        = {{Ten simple rules to run a successful BioHackathon}},
+  journal      = {PLoS Comput Biol},
+  year         = {2020},
+  volume       = {16},
+  number       = {5},
+  pages        = {e1007808},
+  doi          = {10.1371/journal.pcbi.1007808},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/32379758},
+}
+
+@article{Mott:2020,
+  keywords     = "cv,genenetwork,group,highlight,bio2",
+  doi          = {10.1534/genetics.120.303153},
+  pmcid        = {7268998},
+  pmid         = {32327562},
+  IDS          = {HEGP},
+  author       = {Mott, R. and Fischer, C. and Prins, P. and Davies, R. W.},
+  title        = {{Private Genomes and Public SNPs: Homomorphic Encryption of Genotypes and Phenotypes for
+Shared Quantitative Genetics}},
+  journal      = {Genetics},
+  year         = {2020},
+  volume       = {215},
+  number       = {2},
+  pages        = {359-372},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/32327562},
+  note         = {open access},
+  abstract     = {Sharing human genotype and phenotype data is essential to discover otherwise inaccessible
+ genetic associations, but is a challenge because of privacy concerns. Here, we present a method of homomor
+phic encryption that obscures individuals' genotypes and phenotypes, and is suited to quantitative genetic
+association analysis. Encrypted ciphertext and unencrypted plaintext are analytically interchangeable. The
+encryption uses a high-dimensional random linear orthogonal transformation key that leaves the likelihood o
+f quantitative trait data unchanged under a linear model with normally distributed errors. It also preserve
+s linkage disequilibrium between genetic variants and associations between variants and phenotypes. It scra
+mbles relationships between individuals: encrypted genotype dosages closely resemble Gaussian deviates, and
+ can be replaced by quantiles from a Gaussian with negligible effects on accuracy. Likelihood-based inferen
+ces are unaffected by orthogonal encryption. These include linear mixed models to control for unequal relat
+edness between individuals, heritability estimation, and including covariates when testing association. Ort
+hogonal transformations can be applied in a modular fashion for multiparty federated mega-analyses where th
+e parties first agree to share a common set of genotype sites and covariates prior to encryption. Each then
+ privately encrypts and shares their own ciphertext, and analyses all parties' ciphertexts. In the absence
+of private variants, or knowledge of the key, we show that it is infeasible to decrypt ciphertext using exi
+sting brute-force or noise-reduction attacks. We present the method as a challenge to the community to dete
+rmine its security.},
+}
+
+@article{Mungall:2020,
+ title={Logic Programming for the Biomedical Sciences},
+ author={Mungall, Chris and Chiba, Hirokazu and Kawashima, Shuichi and Amin, Nada and Uni, Deepak and Prins, Pjotr and Yamamoto, Yasunori and Byrd, William E.},
+ keywords = {genenetwork,cv},
+ type={preprint},
+ url={https://biohackrxiv.org/km9ux},
+ DOI={10.37044/osf.io/km9ux},
+ journal={BioHackrXiv},
+ publisher={BioHackrXiv},
+ year={2020},
+ month={Apr}
+}
+
+@article{Vos:2020,
+  pmid         = {32308977},
+  pmcid        = {7141167},
+  keywords     = "cv,bio4",
+  note         = "open access",
+  author       = {Vos, R. A. and Katayama, T. and Mishima, H. and Kawano, S. and Kawashima, S. and Kim, J. D. and Moriya, Y. and Tokimatsu, T. and Yamaguchi, A. and Yamamoto, Y. and Wu, H. and Amstutz, P. and Antezana, E. and Aoki, N. P. and Arakawa, K. and Bolleman, J. T. and Bolton, E. and Bonnal, R. J. P. and Bono, H. and Burger, K. and Chiba, H. and Cohen, K. B. and Deutsch, E. W. and Fernandez-Breis, J. T. and Fu, G. and Fujisawa, T. and Fukushima, A. and Garcia, A. and Goto, N. and Groza, T. and Hercus, C. and Hoehndorf, R. and Itaya, K. and Juty, N. and Kawashima, T. and Kim, J. H. and Kinjo, A. R. and Kotera, M. and Kozaki, K. and Kumagai, S. and Kushida, T. and Lutteke, T. and Matsubara, M. and Miyamoto, J. and Mohsen, A. and Mori, H. and Naito, Y. and Nakazato, T. and Nguyen-Xuan, J. and Nishida, K. and Nishida, N. and Nishide, H. and Ogishima, S. and Ohta, T. and Okuda, S. and Paten, B. and Perret, J. L. and Prathipati, P. and Prins, P. and Queralt-Rosinach, N. and Shinmachi, D. and Suzuki, S. and Tabata, T. and Takatsuki, T. and Taylor, K. and Thompson, M. and Uchiyama, I. and Vieira, B. and Wei, C. H. and Wilkinson, M. and Yamada, I. and Yamanaka, R. and Yoshitake, K. and Yoshizawa, A. C. and Dumontier, M. and Kosaki, K. and Takagi, T.},
+  title        = {{BioHackathon 2015: Semantics of data for life sciences and reproducible research}},
+  journal      = {F1000Res},
+  year         = {2020},
+  volume       = {9},
+  pages        = {136},
+  doi          = {10.12688/f1000research.18236.1},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/32308977},
+  abstract     = {We report on the activities of the 2015 edition of the BioHackathon, an annual event that brings together researchers and developers from around the world to develop tools and technologies that promote the reusability of biological data. We discuss issues surrounding the representation, publication, integration, mining and reuse of biological data and metadata across a wide range of biomedical data types of relevance for the life sciences, including chemistry, genotypes and phenotypes, orthology and phylogeny, proteomics, genomics, glycomics, and metabolomics. We describe our progress to address ongoing challenges to the reusability and reproducibility of research results, and identify outstanding issues that continue to impede the progress of bioinformatics research. We share our perspective on the state of the art, continued challenges, and goals for future research and development for the life sciences Semantic Web.},
+}
+
+
 @article{Prins:2019,
+  pmid         = {31278680},
   author       = {Prins, P. and Smant, G. and Arends, D. and Mulligan, M. K. and Williams, R. W. and Jansen, R. C.},
   title        = {{Systems Genetics for Evolutionary Studies}},
   journal      = {Methods Mol Biol},
   year         = {2019},
   volume       = {1910},
   pages        = {635-652},
+  edition      = {second},
+  note         = {open access},
   doi          = {10.1007/978-1-4939-9074-0_21},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/31278680},
   abstract     = {Systems genetics combines high-throughput genomic data with genetic analysis. In this chapter, we review and discuss application of systems genetics in the context of evolutionary studies, in which high-throughput molecular technologies are being combined with quantitative trait locus (QTL) analysis in segregating populations.The recent explosion of high-throughput data-measuring thousands of RNAs, proteins, and metabolites, using deep sequencing, mass spectrometry, chromatin, methyl-DNA immunoprecipitation, etc.-allows the dissection of causes of genetic variation underlying quantitative phenotypes of all types. To deal with the sheer amount of data, powerful statistical tools are needed to analyze multidimensional relationships and to extract valuable information and new modes and mechanisms of changes both within and between species. In the context of evolutionary computational biology, a well-designed experiment and the right population can help dissect complex traits likely to be under selection using proven statistical methods for associating phenotypic variation with chromosomal locations.Recent evolutionary expression QTL (eQTL) studies focus on gene expression adaptations, mapping the gene expression landscape, and, tentatively, define networks of transcripts and proteins that are jointly modulated sets of eQTL networks. Here, we discuss the possibility of introducing an evolutionary "prior" in the form of gene families displaying evidence of positive selection, and using that prior in the context of an eQTL experiment for elucidating host-pathogen protein-protein interactions.Here we review one exemplar evolutionairy eQTL experiment and discuss experimental design, choice of platforms, analysis methods, scope, and interpretation of results. In brief we highlight how eQTL are defined; how they are used to assemble interacting and causally connected networks of RNAs, proteins, and metabolites; and how some QTLs can be efficiently converted to reasonably well-defined sequence variants.},
-  keywords  = "genenetwork"
+  keywords  = "cv,genenetwork,group,book,highlight,first"
 
 }
 
 @article{Strozzi:2019,
-  author       = {Strozzi, F. and Janssen, R. and Wurmus, R. and Crusoe, M. R. and Githinji, G. and Di Tommaso, P. and Belhachemi, D. and Moller, S. and Smant, G. and de Ligt, J. and Prins, P.},
+  IDS          = "CWL",
+  pmid         = {31278683},
+  keywords  = "cv,genenetwork,group,book,last,bio4",
+  note         = "open access",
+  author       = {Strozzi, F. and Janssen, R. and Wurmus, R. and Crusoe, M. R. and Githinji, G. and Di Tommaso, P. and Belhachemi, D. and M\"{o}ller, S. and Smant, G. and de Ligt, J. and Prins, P.},
   title        = {{Scalable Workflows and Reproducible Data Analysis for Genomics}},
   journal      = {Methods Mol Biol},
   year         = {2019},
@@ -22,14 +141,14 @@
   doi          = {10.1007/978-1-4939-9074-0_24},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/31278683},
   abstract     = {Biological, clinical, and pharmacological research now often involves analyses of genomes, transcriptomes, proteomes, and interactomes, within and between individuals and across species. Due to large volumes, the analysis and integration of data generated by such high-throughput technologies have become computationally intensive, and analysis can no longer happen on a typical desktop computer.In this chapter we show how to describe and execute the same analysis using a number of workflow systems and how these follow different approaches to tackle execution and reproducibility issues. We show how any researcher can create a reusable and reproducible bioinformatics pipeline that can be deployed and run anywhere. We show how to create a scalable, reusable, and shareable workflow using four different workflow engines: the Common Workflow Language (CWL), Guix Workflow Language (GWL), Snakemake, and Nextflow. Each of which can be run in parallel.We show how to bundle a number of tools used in evolutionary biology by using Debian, GNU Guix, and Bioconda software distributions, along with the use of container systems, such as Docker, GNU Guix, and Singularity. Together these distributions represent the overall majority of software packages relevant for biology, including PAML, Muscle, MAFFT, MrBayes, and BLAST. By bundling software in lightweight containers, they can be deployed on a desktop, in the cloud, and, increasingly, on compute clusters.By bundling software through these public software distributions, and by creating reproducible and shareable pipelines using these workflow engines, not only do bioinformaticians have to spend less time reinventing the wheel but also do we get closer to the ideal of making science reproducible. The examples in this chapter allow a quick comparison of different solutions.},
-  note      = "highly accessed",
-  keywords  = "genenetwork,group"
-
 }
 
 @article{Bonnal:2019,
+  pmid         = {31278684},
+  pmcid        = {7212028},
   author       = {Bonnal, R. J. P. and Yates, A. and Goto, N. and Gautier, L. and Willis, S. and Fields, C. and Katayama, T. and Prins, P.},
   title        = {{Sharing Programming Resources Between Bio* Projects}},
+  edition      = {second},
   journal      = {Methods Mol Biol},
   year         = {2019},
   volume       = {1910},
@@ -37,11 +156,13 @@
   doi          = {10.1007/978-1-4939-9074-0_25},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/31278684},
   abstract     = {Open-source software encourages computer programmers to reuse software components written by others. In evolutionary bioinformatics, open-source software comes in a broad range of programming languages, including C/C++, Perl, Python, Ruby, Java, and R. To avoid writing the same functionality multiple times for different languages, it is possible to share components by bridging computer languages and Bio* projects, such as BioPerl, Biopython, BioRuby, BioJava, and R/Bioconductor.In this chapter, we compare the three principal approaches for sharing software between different programming languages: by remote procedure call (RPC), by sharing a local "call stack," and by calling program to programs. RPC provides a language-independent protocol over a network interface; examples are SOAP and Rserve. The local call stack provides a between-language mapping, not over the network interface but directly in computer memory; examples are R bindings, RPy, and languages sharing the Java virtual machine stack. This functionality provides strategies for sharing of software between Bio* projects, which can be exploited more often.Here, we present cross-language examples for sequence translation and measure throughput of the different options. We compare calling into R through native R, RSOAP, Rserve, and RPy interfaces, with the performance of native BioPerl, Biopython, BioJava, and BioRuby implementations and with call stack bindings to BioJava and the European Molecular Biology Open Software Suite (EMBOSS).In general, call stack approaches outperform native Bio* implementations, and these, in turn, outperform "RPC"-based approaches. To test and compare strategies, we provide a downloadable Docker container with all examples, tools, and libraries included.},
-  keywords  = "genenetwork"
+  keywords  = "cv,genenetwork,group,book,last",
+  note         = {open access}
 
 }
 
-@article{Prins:2012,
+@article{Prins:2012a,
+  pmid         = {22399473},
   author       = {Prins, P. and Goto, N. and Yates, A. and Gautier, L. and Willis, S. and Fields, C. and Katayama, T.},
   title        = {{Sharing programming resources between Bio* projects through remote procedure call and native call stack strategies}},
   journal      = {Methods Mol Biol},
@@ -51,11 +172,15 @@
   doi          = {10.1007/978-1-61779-585-5_21},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/22399473},
   abstract     = {Open-source software (OSS) encourages computer programmers to reuse software components written by others. In evolutionary bioinformatics, OSS comes in a broad range of programming languages, including C/C++, Perl, Python, Ruby, Java, and R. To avoid writing the same functionality multiple times for different languages, it is possible to share components by bridging computer languages and Bio* projects, such as BioPerl, Biopython, BioRuby, BioJava, and R/Bioconductor. In this chapter, we compare the two principal approaches for sharing software between different programming languages: either by remote procedure call (RPC) or by sharing a local call stack. RPC provides a language-independent protocol over a network interface; examples are RSOAP and Rserve. The local call stack provides a between-language mapping not over the network interface, but directly in computer memory; examples are R bindings, RPy, and languages sharing the Java Virtual Machine stack. This functionality provides strategies for sharing of software between Bio* projects, which can be exploited more often. Here, we present cross-language examples for sequence translation, and measure throughput of the different options. We compare calling into R through native R, RSOAP, Rserve, and RPy interfaces, with the performance of native BioPerl, Biopython, BioJava, and BioRuby implementations, and with call stack bindings to BioJava and the European Molecular Biology Open Software Suite. In general, call stack approaches outperform native Bio* implementations and these, in turn, outperform RPC-based approaches. To test and compare strategies, we provide a downloadable BioNode image with all examples, tools, and libraries included. The BioNode image can be run on VirtualBox-supported operating systems, including Windows, OSX, and Linux.},
-  keywords     = "genenetwork"
+  keywords  = "cv,genenetwork,group,book,first"
 }
 
 @article{Broman:2019,
-  author       = {Broman, K. W. and Gatti, D. M. and Simecek, P. and Furlotte, N. A. and Prins, P. and Sen, S. and Yandell, B. S. and Churchill, G. A.},
+  keywords     = "cv,genenetwork,highlight,bio2",
+  pmid         = {30591514},
+  pmcid        = {6366910},
+  IDS          = {rqtl2},
+  author       = {Broman, K. W. and Gatti, D. M. and Simecek, P. and Furlotte, N. A. and Prins, P. and Sen, \'{S}. and Yandell, B. S. and Churchill, G. A.},
   title        = {{R/qtl2: Software for Mapping Quantitative Trait Loci with High-Dimensional Data and Multiparent Populations}},
   journal      = {Genetics},
   year         = {2019},
@@ -64,15 +189,17 @@
   pages        = {495-502},
   doi          = {10.1534/genetics.118.301595},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/30591514},
+  note         = "open access",
+  pmid         = "30591514",
+  pmcid        = "6366910",
   abstract     = {R/qtl2 is an interactive software environment for mapping quantitative trait loci (QTL) in experimental populations. The R/qtl2 software expands the scope of the widely used R/qtl software package to include multiparent populations derived from more than two founder strains, such as the Collaborative Cross and Diversity Outbred mice, heterogeneous stocks, and MAGIC plant populations. R/qtl2 is designed to handle modern high-density genotyping data and high-dimensional molecular phenotypes, including gene expression and proteomics. R/qtl2 includes the ability to perform genome scans using a linear mixed model to account for population structure, and also includes features to impute SNPs based on founder strain genomes and to carry out association mapping. The R/qtl2 software provides all of the basic features needed for QTL mapping, including graphical displays and summary reports, and it can be extended through the creation of add-on packages. R/qtl2, which is free and open source software written in the R and C++ programming languages, comes with a test framework.},
-  keywords     = "genenetwork"
 
 }
 
 @article{Said:2018,
   author       = {Said Mohammed, K. and Kibinge, N. and Prins, P. and Agoti, C. N. and Cotten, M. and Nokes, D. J. and Brand, S. and Githinji, G.},
   title        = {{Evaluating the performance of tools used to call minority variants from whole genome short-read data}},
-  keywords     = "genenetwork",
+  keywords     = "cv,genenetwork,group",
   journal      = {Wellcome Open Res},
   year         = {2018},
   volume       = {3},
@@ -86,42 +213,48 @@
 @article{Mulligan:2018,
   author       = {Mulligan, M. K. and Zhao, W. and Dickerson, M. and Arends, D. and Prins, P. and Cavigelli, S. A. and Terenina, E. and Mormede, P. and Lu, L. and Jones, B. C.},
   title        = {{Genetic Contribution to Initial and Progressive Alcohol Intake Among Recombinant Inbred Strains of Mice}},
-  keywords     = "genenetwork",
   journal      = {Front Genet},
+  pmid         = {30319684},
+  pmcid        = {6167410},
+  note         = {open access},
   year         = {2018},
   volume       = {9},
   pages        = {370},
   doi          = {10.3389/fgene.2018.00370},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/30319684},
   abstract     = {We profiled individual differences in alcohol consumption upon initial exposure and during 5 weeks of voluntary alcohol intake in female mice from 39 BXD recombinant inbred strains and parents using the drinking in the dark (DID) method. In this paradigm, a single bottle of 20\% (v/v) alcohol was presented as the sole liquid source for 2 or 4 h starting 3 h into the dark cycle. For 3 consecutive days mice had access to alcohol for 2 h followed by a 4th day of 4 h access and 3 intervening days where alcohol was not offered. We followed this regime for 5 weeks. For most strains, 2 or 4 h alcohol intake increased over the 5-week period, with some strains demonstrating greatly increased intake. There was considerable and heritable genetic variation in alcohol consumption upon initial early and sustained weekly exposure. Two different mapping algorithms were used to identify QTLs associated with alcohol intake and only QTLs detected by both methods were considered further. Multiple suggestive QTLs for alcohol intake on chromosomes (Chrs) 2, 6, and 12 were identified for the first 4 h exposure. Suggestive QTLs for sustained intake during later weeks were identified on Chrs 4 and 8. Thirty high priority candidate genes, including Entpd2, Per3, and Fto were nominated for early and sustained alcohol intake QTLs. In addition, a suggestive QTL on Chr 15 was detected for change in 2 h alcohol intake over the duration of the study and Adcy8 was identified as a strong candidate gene. Bioinformatic analyses revealed that early and sustained alcohol intake is likely driven by genes and pathways involved in signaling, and/or immune and metabolic function, while a combination of epigenetic factors related to alcohol experience and genetic factors likely drives progressive alcohol intake.},
+  keywords     = "cv,genenetwork,group",
 
 }
 
 @article{Li:2018,
+  pmid         = {29199021},
+  keywords     = "cv,genenetwork,highlight,bio3",
   author       = {Li, H. and Wang, X. and Rukina, D. and Huang, Q. and Lin, T. and Sorrentino, V. and Zhang, H. and Bou Sleiman, M. and Arends, D. and McDaid, A. and Luan, P. and Ziari, N. and Velazquez-Villegas, L. A. and Gariani, K. and Kutalik, Z. and Schoonjans, K. and Radcliffe, R. A. and Prins, P. and Morgenthaler, S. and Williams, R. W. and Auwerx, J.},
   title        = {{An Integrated Systems Genetics and Omics Toolkit to Probe Gene Function}},
-  keywords     = "genenetwork",
   journal      = {Cell Syst},
   year         = {2018},
   volume       = {6},
+  note         = {open access, highly accessed: in the 99th percentile},
   number       = {1},
   pages        = {90-102.e4},
   doi          = {10.1016/j.cels.2017.10.016},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/29199021},
   abstract     = {Identifying genetic and environmental factors that impact complex traits and common diseases is a high biomedical priority. Here, we developed, validated, and implemented a series of multi-layered systems approaches, including (expression-based) phenome-wide association, transcriptome-/proteome-wide association, and (reverse-) mediation analysis, in an open-access web server (systems-genetics.org) to expedite the systems dissection of gene function. We applied these approaches to multi-omics datasets from the BXD mouse genetic reference population, and identified and validated associations between genes and clinical and molecular phenotypes, including previously unreported links between Rpl26 and body weight, and Cpt1a and lipid metabolism. Furthermore, through mediation and reverse-mediation analysis we established regulatory relations between genes, such as the co-regulation of BCKDHA and BCKDHB protein levels, and identified targets of transcription factors E2F6, ZFP277, and ZKSCAN1. Our multifaceted toolkit enabled the identification of gene-gene and gene-phenotype links that are robust and that translate well across populations and species, and can be universally applied to any populations with multi-omics datasets.},
-
 }
 
 @article{Mulligan:2017,
+  IDS          = {GeneNetwork},
   author       = {Mulligan, M. K. and Mozhui, K. and Prins, P. and Williams, R. W.},
   title        = {{GeneNetwork: A Toolbox for Systems Genetics}},
-  keywords     = "genenetwork",
+  keywords     = "cv,genenetwork,book",
   journal      = {Methods Mol Biol},
   year         = {2017},
   volume       = {1488},
   pages        = {75-120},
   doi          = {10.1007/978-1-4939-6427-7_4},
   url          = {http://www.ncbi.nlm.nih.gov/pubmed/27933521},
+  pmid         = {27933521},
   abstract     = {The goal of systems genetics is to understand the impact of genetic variation across all levels of biological organization, from mRNAs, proteins, and metabolites, to higher-order physiological and behavioral traits. This approach requires the accumulation and integration of many types of data, and also requires the use of many types of statistical tools to extract relevant patterns of covariation and causal relations as a function of genetics, environment, stage, and treatment. In this protocol we explain how to use the GeneNetwork web service, a powerful and free online resource for systems genetics. We provide workflows and methods to navigate massive multiscalar data sets and we explain how to use an extensive systems genetics toolkit for analysis and synthesis. Finally, we provide two detailed case studies that take advantage of human and mouse cohorts to evaluate linkage between gene variants, addiction, and aging.},
 
 }
@@ -129,7 +262,7 @@
 @article{Nijveen:2017,
   author       = {Nijveen, H. and Ligterink, W. and Keurentjes, J. J. and Loudet, O. and Long, J. and Sterken, M. G. and Prins, P. and Hilhorst, H. W. and de Ridder, D. and Kammenga, J. E. and Snoek, B. L.},
   title        = {{AraQTL - workbench and archive for systems genetics in Arabidopsis thaliana}},
-  keywords     = "genenetwork",
+  keywords     = "cv,genenetwork",
   journal      = {Plant J},
   year         = {2017},
   volume       = {89},
@@ -143,11 +276,11 @@
 
 @misc{Barba:2019,
  title={Giving software its due through community-driven review and publication},
- keywords     = "genenetwork",
- url={osf.io/f4vx6},
+ keywords     = "genenetwork,group,other",
  DOI={10.31219/osf.io/f4vx6},
  publisher={OSF Preprints},
- author={Barba, Lorena A and Bazán, Juanjo and Brown, Jed and Guimera, Roman V and Gymrek, Melissa and Hanna, Alex and Heagy, Lindsey J and Huff, Kathryn D and Katz, Daniel S and Madan, Christopher R and et al.},
+ type = "preprint",
+ author={Barba, Lorena A and Baz\'{a}n, Juanjo and Brown, Jed and Guimera, Roman V and Gymrek, Melissa and Hanna, Alex and Heagy, Lindsey J and Huff, Kathryn D and Katz, Daniel S and Madan, Christopher R and Prins, P and et al.},
  year={2019},
  month={4}
 }
@@ -155,7 +288,7 @@
 @techreport{Bavier:2019,
   TITLE = {{Guix-HPC Activity Report 2017--2018}},
   AUTHOR = {Bavier, Eric and Court{\`e}s, Ludovic and Garlick, Paul and Prins, Pjotr and Wurmus, Ricardo},
-  keywords     = "genenetwork",
+  keywords     = "genenetwork,other",
   URL = {https://hal.inria.fr/hal-02056461},
   TYPE = {Technical Report},
   INSTITUTION = {{Inria Bordeaux Sud-Ouest ; Max Delbr{\"u}ck Center for Molecular Medicine ; Cray, Inc. ; Tourbillion Technology}},
@@ -168,35 +301,41 @@
 
 
 @article {Ashbrook:2019,
-	author = {Ashbrook, David G. and Arends, Danny and Prins, Pjotr and Mulligan, Megan K. and Roy, Suheeta and Williams, Evan G. and Lutz, Cathleen M. and Valenzuela, Alicia and Bohl, Casey J. and Ingels, Jesse F. and McCarty, Melinda S. and Centeno, Arthur G. and Hager, Reinmar and Auwerx, Johan and Sen, Saunak and Lu, Lu and Williams, Robert W.},
-	title = {The expanded BXD family of mice: A cohort for experimental systems genetics and precision medicine},
+        IDS = "BXD",
+	author = {Ashbrook, David G. and Arends, Danny and Prins, Pjotr and Mulligan, Megan K. and Roy, Suheeta and Williams, Evan G. and Lutz, Cathleen M. and Valenzuela, Alicia and Bohl, Casey J. and Ingels, Jesse F. and McCarty, Melinda S. and Centeno, Arthur G. and Hager, Reinmar and Auwerx, Johan and Sen, \'{S}aunak and Lu, Lu and Williams, Robert W.},
+	title = {{The expanded BXD family of mice: A cohort for experimental systems genetics and precision medicine}},
 	elocation-id = {672097},
-  keywords     = "genenetwork",
+  keywords     = "cv,genenetwork,group",
 	year = {2019},
 	doi = {10.1101/672097},
 	publisher = {Cold Spring Harbor Laboratory},
-	abstract = {The challenge of precision medicine is to model complex interactions among DNA variants, sets of phenotypes, and complex environmental factors and confounders. We have expanded the BXD family, creating a powerful and extensible test bed for experimental precision medicine and an ideal cohort to study gene-by-environmental interactions.These BXD segregate for over 6 million variants, with a mean minor allele frequency close to 0.5. We have increased the family two-fold to 150 inbred strains, all derived from C57BL/6J and DBA/2J. We have also generated updated and comprehensive genotypes and an unrivaled deep phenome.Approximately 10,000 recombinations have been located, allowing precision of quantitative trait loci mapping of {\textpm}2.0 Mb over much of the genome and {\textpm}0.5 Mb for Mendelian loci. The BXD phenome includes more than 100 {\textquoteleft}omics data sets and \&gt;7000 quantitative and clinical phenotypes, all of which is publicly available.The BXD family is an enduring, collaborative, and replicable resource to test causal and mechanistic links between genomes and phenomes at many stages and under a wide variety of treatments and interventions.List of abbreviationsADAlzheimer{\textquoteright}s DiseaseAIadvanced intercrossB6C57BL/6J mouse strainBLASTBasic Local Alignment Search ToolBXDBXD family of recombinant inbred strains of mice, produced by crossing the B6 and D2 parental strainsCCCollaborative CrossChrChromosomecMcentimorganD2DBA/2J mouse strainDODiversity OutbredDXdiallel crossEMRselectronic medical recordseQTLExpression quantitative trait locusF2Filial generation 2GEMMAGenome-wide Efficient Mixed Model AssociationGigaMUGAGiga Mouse Universal Genotyping ArrayGNGeneNetwork (http://genenetwork.org)GN2GeneNetwork2 (http://gn2.genenetwork.org)GWASgenome-wide association studyH2ix̅heritability of isogenic strain meansH2RIx̅heritability of recombinant inbred strain meansHMDPHybrid Mouse Diversity PanelIMPCInternational Mouse Phenotyping ConsortiumJAXThe Jackson LaboratoryKbkilobaseKOMPKnockout Mouse projectLODlogarithm of oddsLRSlikelihood ratio statisticMbMegabaseMMRRCMutant Mouse Resource \&amp; Research CentersMUGAMouse Universal Genotyping ArraynRecPnumber of observed recombinations from one position to the nextnRecSnumber of observed recombinations per strainPheWASphenome-wide association studiesQTquantitative traitQTLquantitative trait locusr2Coefficient of determinationRIRecombinant inbredRIXsRecombinant inbred intercrossesSEStandard error of the meanSNPsingle nucleotide polymorphismUTHSCUniversity of Tennessee Health Science Center},
 	URL = {https://www.biorxiv.org/content/early/2019/07/08/672097},
 	eprint = {https://www.biorxiv.org/content/early/2019/07/08/672097.full.pdf},
-	journal = {bioRxiv}
+	journal = {bioRxiv},
+  note = {open access}
 }
 
 
 @article{Sloan:2016,
 author = {Sloan, Zachary and Arends, Danny and Broman, Karl and Centeno, Arthur and Furlotte, Nicholas and Nijveen, Harm and Yan, Lei and Zhou, Xiang and Williams, Robert and Prins, Pjotr},
 year = {2016},
-keywords     = "genenetwork",
 month = {06},
+volume = {1},
+number = {25},
 pages = {8-10},
+note = {\VERSION},
 title = {GeneNetwork: framework for web-based genetics},
 journal = {The Journal of Open Source Software},
-doi = {10.21105/joss.00025}
+doi = {10.21105/joss.00025},
+keywords     = "cv,genenetwork,group,last",
 }
 
 
 @article{Arends:2016,
 author = {Arends, Danny and Li, Yang and Brockmann, Gudrun and Jansen, Ritsert and Williams, Robert and Prins, Pjotr},
-keywords     = "genenetwork",
+keywords     = "cv,genenetwork,group,last,bio2",
+note = "open access",
+IDS  = {CTL},
 year = {2016},
 month = {10},
 pages = {},
@@ -208,13 +347,421 @@ doi = {10.21105/joss.00087}
 
 
 @article{Smith:2017,
+keywords     = "cv,genenetwork,group,bio1",
+note         = "open access",
 author = {Smith, Arfon and Niemeyer, Kyle and Katz, Daniel S. and Barba, Lorena and Githinji, George and Gymrek, Melissa and Huff, Kathryn and Madan, Christopher and Mayes, Abigail and Moerman, Kevin and Prins, Pjotr and Ram, Karthik and Rokem, Ariel and Teal, Tracy and Guimera, Roman and Vanderplas, Jacob},
 year = {2017},
-keywords     = "genenetwork",
 month = {07},
 pages = {},
-title = {Journal of Open Source Software (JOSS): Design and first-year review},
+title = {{Journal of Open Source Software (JOSS): Design and first-year review}},
 volume = {4},
 journal = {PeerJ Computer Science},
 doi = {10.7717/peerj-cs.147}
+}
+
+@article{Prins:2015,
+  pmid         = {26154002},
+  keywords     = "cv,group,highlight,first,bio,bio1",
+  author       = {Prins, P. and de Ligt, J. and Tarasov, A. and Jansen, R. C. and Cuppen, E. and Bourne, P. E.},
+  title        = {{Toward effective software solutions for big biology}},
+  journal      = {Nat Biotechnol},
+  year         = {2015},
+  volume       = {33},
+  number       = {7},
+  pages        = {686-687},
+  note         = {open access, highly accessed: in the 99th percentile},
+  doi          = {10.1038/nbt.3240},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/26154002},
+}
+
+@article{Tarasov:2015,
+  pmid         = {25697820},
+  pmcid        = {4765878},
+  author       = {Tarasov, A. and Vilella, A. J. and Cuppen, E. and Nijman, I. J. and Prins, P.},
+  title        = {{Sambamba: fast processing of NGS alignment formats}},
+  journal      = {Bioinformatics},
+  year         = {2015},
+  volume       = {31},
+  number       = {12},
+  pages        = {2032-2034},
+  doi          = {10.1093/bioinformatics/btv098},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/25697820},
+  abstract     = {Sambamba is a high-performance robust tool and library for working with SAM, BAM and CRAM sequence alignment files; the most common file formats for aligned next generation sequencing data. Sambamba is a faster alternative to samtools that exploits multi-core processing and dramatically reduces processing time. Sambamba is being adopted at sequencing centers, not only because of its speed, but also because of additional functionality, including coverage analysis and powerful filtering capability. AVAILABILITY AND IMPLEMENTATION: Sambamba is free and open source software, available under a GPLv2 license. Sambamba can be downloaded and installed from http://www.open-bio.org/wiki/Sambamba.Sambamba v0.5.0 was released with doi:10.5281/zenodo.13200.},
+  keywords     = "cv,group,highlight,last,bio",
+  note         = "open access, highly cited"
+}
+
+@article{Bonnal:2012,
+  author       = {Bonnal, R. J. and Aerts, J. and Githinji, G. and Goto, N. and MacLean, D. and Miller, C. A. and Mishima, H. and Pagani, M. and Ramirez-Gonzalez, R. and Smant, G. and Strozzi, F. and Syme, R. and Vos, R. and Wennblom, T. J. and Woodcroft, B. J. and Katayama, T. and Prins, P.},
+  title        = {{Biogem: an effective tool-based approach for scaling up open source software development in bioinformatics}},
+  journal      = {Bioinformatics},
+  year         = {2012},
+  volume       = {28},
+  number       = {7},
+  pages        = {1035-1037},
+  doi          = {10.1093/bioinformatics/bts080},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/22332238},
+  abstract     = {SUMMARY: Biogem provides a software development environment for the Ruby programming language, which encourages community-based software development for bioinformatics while lowering the barrier to entry and encouraging best practices. Biogem, with its targeted modular and decentralized approach, software generator, tools and tight web integration, is an improved general model for scaling up collaborative open source software development in bioinformatics. AVAILABILITY: Biogem and modules are free and are OSS. Biogem runs on all systems that support recent versions of Ruby, including Linux, Mac OS X and Windows. Further information at http://www.biogems.info. A tutorial is available at http://www.biogems.info/howto.html CONTACT: bonnal@ingm.org.},
+  keywords     = "cv,group,last"
+}
+
+@MISC{MANIFESTO,
+      author        = "Pjotr Prins and Francesco Strozzi and Artem Tarasov and Joep de Ligt and George Githinji and others",
+      title         = "{Small tools MANIFESTO for Bioinformatics}",
+      month         = {8},
+      year          = {2014},
+      howpublished  = "doi: 10.5281/zenodo.11321",
+      url           = "https://dx.doi.org/10.5281/zenodo.11321",
+      doi  = {10.5281/zenodo.11321},
+      keywords      = "group"
+}
+
+
+@article{Blokzijl:2016,
+  pmid         = {27698416},
+  pmcid        = {5536223},
+  note         = {open access, highly accessed: in the 99th percentile},
+  keywords    = "cv,group,highlight,bio3",
+  author       = {Blokzijl, F. and de Ligt, J. and Jager, M. and Sasselli, V. and Roerink, S. and Sasaki, N. and Huch, M. and Boymans, S. and Kuijk, E. and Prins, P. and Nijman, I. J. and Martincorena, I. and Mokry, M. and Wiegerinck, C. L. and Middendorp, S. and Sato, T. and Schwank, G. and Nieuwenhuis, E. E. and Verstegen, M. M. and van der Laan, L. J. and de Jonge, J. and IJzermans, J. N. and Vries, R. G. and van de Wetering, M. and Stratton, M. R. and Clevers, H. and Cuppen, E. and van Boxtel, R.},
+  title        = {{Tissue-specific mutation accumulation in human adult stem cells during life}},
+  journal      = {Nature},
+  year         = {2016},
+  volume       = {538},
+  number       = {7624},
+  pages        = {260-264},
+  doi          = {10.1038/nature19768},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/27698416},
+  abstract     = {The gradual accumulation of genetic mutations in human adult stem cells (ASCs) during life is associated with various age-related diseases, including cancer. Extreme variation in cancer risk across tissues was recently proposed to depend on the lifetime number of ASC divisions, owing to unavoidable random mutations that arise during DNA replication. However, the rates and patterns of mutations in normal ASCs remain unknown. Here we determine genome-wide mutation patterns in ASCs of the small intestine, colon and liver of human donors with ages ranging from 3 to 87 years by sequencing clonal organoid cultures derived from primary multipotent cells. Our results show that mutations accumulate steadily over time in all of the assessed tissue types, at a rate of approximately 40 novel mutations per year, despite the large variation in cancer incidence among these tissues. Liver ASCs, however, have different mutation spectra compared to those of the colon and small intestine. Mutational signature analysis reveals that this difference can be attributed to spontaneous deamination of methylated cytosine residues in the colon and small intestine, probably reflecting their high ASC division rate. In liver, a signature with an as-yet-unknown underlying mechanism is predominant. Mutation spectra of driver genes in cancer show high similarity to the tissue-specific ASC mutation spectra, suggesting that intrinsic mutational processes in ASCs can initiate tumorigenesis. Notably, the inter-individual variation in mutation rate and spectra are low, suggesting tissue-specific activity of common mutational processes throughout life.},
+
+}
+
+@article{Moelans:2019,
+  pmid         = {31340200},
+  pmcid        = {6938562},
+  author       = {Moelans, C. B. and de Ligt, J. and van der Groep, P. and Prins, P. and Besselink, N. J. M. and Hoogstraat, M. and Ter Hoeve, N. D. and Lacle, M. M. and Kornegoor, R. and van der Pol, C. C. and de Leng, W. W. J. and Barbe, E. and van der Vegt, B. and Martens, J. and Bult, P. and Smit, V. T. H. B. M. and Koudijs, M. J. and Nijman, I. J. and Voest, E. E. and Selenica, P. and Weigelt, B. and Reis-Filho, J. S. and van der Wall, E. and Cuppen, E. and van Diest, P. J.},
+  title        = {{The molecular genetic make-up of male breast cancer}},
+  journal      = {Endocr Relat Cancer},
+  year         = {2019},
+  volume       = {26},
+  number       = {10},
+  pages        = {779-794},
+  doi          = {10.1530/ERC-19-0278},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/31340200},
+  keywords    = "cv,group",
+}
+
+@article{Arends:2010,
+  pmid         = {20966004},
+  pmcid        = {2982156},
+  note         = "open access, highly cited",
+  keywords     = "cv,genenetwork,group,first,bio2",
+  author       = {Arends, D. and Prins, P. and Jansen, R. C. and Broman, K. W.},
+  title        = {{R/qtl: high-throughput multiple QTL mapping}},
+  journal      = {Bioinformatics},
+  year         = {2010},
+  volume       = {26},
+  number       = {23},
+  pages        = {2990-2992},
+  doi          = {10.1093/bioinformatics/btq565},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/20966004},
+  abstract     = {MOTIVATION: R/qtl is free and powerful software for mapping and exploring quantitative trait loci (QTL). R/qtl provides a fully comprehensive range of methods for a wide range of experimental cross types. We recently added multiple QTL mapping (MQM) to R/qtl. MQM adds higher statistical power to detect and disentangle the effects of multiple linked and unlinked QTL compared with many other methods. MQM for R/qtl adds many new features including improved handling of missing data, analysis of 10,000 s of molecular traits, permutation for determining significance thresholds for QTL and QTL hot spots, and visualizations for cis-trans and QTL interaction effects. MQM for R/qtl is the first free and open source implementation of MQM that is multi-platform, scalable and suitable for automated procedures and large genetical genomics datasets. AVAILABILITY: R/qtl is free and open source multi-platform software for the statistical language R, and is made available under the GPLv3 license. R/qtl can be installed from http://www.rqtl.org/. R/qtl queries should be directed at the mailing list, see http://www.rqtl.org/list/. CONTACT: kbroman@biostat.wisc.edu.},
+}
+
+
+@article{Arends:2012,
+  author       = {Arends, D. and van der Velde, K. J. and Prins, P. and Broman, K. W. and M\"{o}ller, S. and Jansen, R. C. and Swertz, M. A.},
+  title        = {{xQTL workbench: a scalable web environment for multi-level QTL analysis}},
+  journal      = {Bioinformatics},
+  year         = {2012},
+  volume       = {28},
+  number       = {7},
+  pages        = {1042-1044},
+  doi          = {10.1093/bioinformatics/bts049},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/22308096},
+  abstract     = {SUMMARY: xQTL workbench is a scalable web platform for the mapping of quantitative trait loci (QTLs) at multiple levels: for example gene expression (eQTL), protein abundance (pQTL), metabolite abundance (mQTL) and phenotype (phQTL) data. Popular QTL mapping methods for model organism and human populations are accessible via the web user interface. Large calculations scale easily on to multi-core computers, clusters and Cloud. All data involved can be uploaded and queried online: markers, genotypes, microarrays, NGS, LC-MS, GC-MS, NMR, etc. When new data types come available, xQTL workbench is quickly customized using the Molgenis software generator. AVAILABILITY: xQTL workbench runs on all common platforms, including Linux, Mac OS X and Windows. An online demo system, installation guide, tutorials, software and source code are available under the LGPL3 license from http://www.xqtl.org. CONTACT: m.a.swertz@rug.nl.},
+
+  keywords = "cv,group,genenetwork"
+}
+
+
+@article{Durrant:2012,
+  keywords = "cv,group,genenetwork,bio1",
+  pmid         = {22396485},
+  pmcid        = {3294237},
+  note         = "open access",
+  author       = {Durrant, C. and Swertz, M. A. and Alberts, R. and Arends, D. and M\"{o}ller, S. and Mott, R. and Prins, P. and van der Velde, K. J. and Jansen, R. C. and Schughart, K.},
+  title        = {{Bioinformatics tools and database resources for systems genetics analysis in mice--a short review and an evaluation of future needs}},
+  journal      = {Brief Bioinform},
+  year         = {2012},
+  volume       = {13},
+  number       = {2},
+  pages        = {135-142},
+  doi          = {10.1093/bib/bbr026},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/22396485},
+  abstract     = {During a meeting of the SYSGENET working group 'Bioinformatics', currently available software tools and databases for systems genetics in mice were reviewed and the needs for future developments discussed. The group evaluated interoperability and performed initial feasibility studies. To aid future compatibility of software and exchange of already developed software modules, a strong recommendation was made by the group to integrate HAPPY and R/qtl analysis toolboxes, GeneNetwork and XGAP database platforms, and TIQS and xQTL processing platforms. R should be used as the principal computer language for QTL data analysis in all platforms and a 'cloud' should be used for software dissemination to the community. Furthermore, the working group recommended that all data models and software source code should be made visible in public repositories to allow a coordinated effort on the use of common data structures and file formats.},
+
+}
+
+
+
+@article{Qin:2006,
+  author       = {Qin, L. and Prins, P. and Helder, J.},
+  title        = {{Linking cDNA-AFLP-based gene expression patterns and ESTs}},
+  journal      = {Methods Mol Biol},
+  keywords     = "cv,book",
+  year         = {2006},
+  volume       = {317},
+  pages        = {123-138},
+  doi          = {10.1385/1-59259-968-0:123},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/16264226},
+  abstract     = {Massive amounts of DNA sequence data, generated from expressed sequence tag (EST) and genome sequencing projects, require efficient methods to link sequence databases with temporal and spatial expression profiles. To meet this need, we have developed a powerful computer program (GenEST), which links cDNA sequence data (including EST sequences) with transcript profiles revealed by cDNA-amplified fragment length polymorphism (AFLP). cDNA-AFLP is a highly reproducible differential display method based on restriction enzyme digests and selective amplification under high stringency conditions. GenEST predicts the sizes of virtual transcript derived fragments (TDFs) from cDNA sequences digested in silico. The resulting virtual TDFs could be traced back among the thousands of TDFs displayed on cDNA-AFLP gels. As a consequence, cDNA sequence databases can be screened very efficiently to identify genes with relevant expression profiles. Vice versa, using the restriction enzyme recognition sites, the primer extensions and the estimated TDF size as identifiers, the DNA sequence(s) corresponding to a TDF with an interesting expression pattern can be identified.},
+
+}
+
+@article{Prins:2012,
+  author       = {Prins, P. and Belhachemi, D. and M\"{o}ller, S. and Smant, G.},
+  title        = {{Scalable computing for evolutionary genomics}},
+  journal      = {Methods Mol Biol},
+  year         = {2012},
+  keywords     = "cv,book,first",
+  volume       = {856},
+  pages        = {529-545},
+  doi          = {10.1007/978-1-61779-585-5_22},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/22399474},
+  abstract     = {Genomic data analysis in evolutionary biology is becoming so computationally intensive that analysis of multiple hypotheses and scenarios takes too long on a single desktop computer. In this chapter, we discuss techniques for scaling computations through parallelization of calculations, after giving a quick overview of advanced programming techniques. Unfortunately, parallel programming is difficult and requires special software design. The alternative, especially attractive for legacy software, is to introduce poor man's parallelization by running whole programs in parallel as separate processes, using job schedulers. Such pipelines are often deployed on bioinformatics computer clusters. Recent advances in PC virtualization have made it possible to run a full computer operating system, with all of its installed software, on top of another operating system, inside a "box," or virtual machine (VM). Such a VM can flexibly be deployed on multiple computers, in a local network, e.g., on existing desktop PCs, and even in the Cloud, to create a "virtual" computer cluster. Many bioinformatics applications in evolutionary biology can be run in parallel, running processes in one or more VMs. Here, we show how a ready-made bioinformatics VM image, named BioNode, effectively creates a computing cluster, and pipeline, in a few steps. This allows researchers to scale-up computations from their desktop, using available hardware, anytime it is required. BioNode is based on Debian Linux and can run on networked PCs and in the Cloud. Over 200 bioinformatics and statistical software packages, of interest to evolutionary biology, are included, such as PAML, Muscle, MAFFT, MrBayes, and BLAST. Most of these software packages are maintained through the Debian Med project. In addition, BioNode contains convenient configuration scripts for parallelizing bioinformatics software. Where Debian Med encourages packaging free and open source bioinformatics software through one central project, BioNode encourages creating free and open source VM images, for multiple targets, through one central project. BioNode can be deployed on Windows, OSX, Linux, and in the Cloud. Next to the downloadable BioNode images, we provide tutorials online, which empower bioinformaticians to install and run BioNode in different environments, as well as information for future initiatives, on creating and building such images.},
+
+}
+
+
+@article{Prins:2012c,
+  author       = {Prins, P. and Smant, G. and Jansen, R. C.},
+  title        = {{Genetical genomics for evolutionary studies}},
+  journal      = {Methods Mol Biol},
+  year         = {2012},
+  keywords     = "cv,book,first",
+  volume       = {856},
+  pages        = {469-485},
+  doi          = {10.1007/978-1-61779-585-5_19},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/22399471},
+  abstract     = {Genetical genomics combines acquired high-throughput genomic data with genetic analysis. In this chapter, we discuss the application of genetical genomics for evolutionary studies, where new high-throughput molecular technologies are combined with mapping quantitative trait loci (QTL) on the genome in segregating populations.The recent explosion of high-throughput data--measuring thousands of proteins and metabolites, deep sequencing, chromatin, and methyl-DNA immunoprecipitation--allows the study of the genetic variation underlying quantitative phenotypes, together termed xQTL. At the same time, mining information is not getting easier. To deal with the sheer amount of information, powerful statistical tools are needed to analyze multidimensional relationships. In the context of evolutionary computational biology, a well-designed experiment may help dissect a complex evolutionary trait using proven statistical methods for associating phenotypical variation with genomic locations.Evolutionary expression QTL (eQTL) studies of the last years focus on gene expression adaptations, mapping the gene expression landscape, and, tentatively, eQTL networks. Here, we discuss the possibility of introducing an evolutionary prior, in the form of gene families displaying evidence of positive selection, and using that in the context of an eQTL experiment for elucidating host-pathogen protein-protein interactions. Through the example of an experimental design, we discuss the choice of xQTL platform, analysis methods, and scope of results. The resulting eQTL can be matched, resulting in putative interacting genes and their regulators. In addition, a prior may help distinguish QTL causality from reactivity, or independence of traits, by creating QTL networks.},
+
+}
+
+@article{Trelles:2011,
+  keywords     = "cv,highlight,first,bio1",
+  pmid         = {21301471},
+  author       = {Trelles, O. and Prins, P. and Snir, M. and Jansen, R. C.},
+  title        = {{Big data, but are we ready?}},
+  journal      = {Nat Rev Genet},
+  year         = {2011},
+  volume       = {12},
+  number       = {3},
+  pages        = {224},
+  doi          = {10.1038/nrg2857-c1},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/21301471},
+  note         = "open access",
+}
+
+@article{Hassan:2015,
+  pmid         = {26510153},
+  pmcid        = {4625001},
+  keywords     = "cv,bio3",
+  note         = "open access",
+  author       = {Hassan, M. A. and Jensen, K. D. and Butty, V. and Hu, K. and Boedec, E. and Prins, P. and Saeij, J. P.},
+  title        = {{Transcriptional and Linkage Analyses Identify Loci that Mediate the Differential Macrophage Response to Inflammatory Stimuli and Infection}},
+  journal      = {PLoS Genet},
+  year         = {2015},
+  volume       = {11},
+  number       = {10},
+  pages        = {e1005619},
+  doi          = {10.1371/journal.pgen.1005619},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/26510153},
+  abstract     = {Macrophages display flexible activation states that range between pro-inflammatory (classical activation) and anti-inflammatory (alternative activation). These macrophage polarization states contribute to a variety of organismal phenotypes such as tissue remodeling and susceptibility to infectious and inflammatory diseases. Several macrophage- or immune-related genes have been shown to modulate infectious and inflammatory disease pathogenesis. However, the potential role that differences in macrophage activation phenotypes play in modulating differences in susceptibility to infectious and inflammatory disease is just emerging. We integrated transcriptional profiling and linkage analyses to determine the genetic basis for the differential murine macrophage response to inflammatory stimuli and to infection with the obligate intracellular parasite Toxoplasma gondii. We show that specific transcriptional programs, defined by distinct genomic loci, modulate macrophage activation phenotypes. In addition, we show that the difference between AJ and C57BL/6J macrophages in controlling Toxoplasma growth after stimulation with interferon gamma and tumor necrosis factor alpha mapped to chromosome 3, proximal to the Guanylate binding protein (Gbp) locus that is known to modulate the murine macrophage response to Toxoplasma. Using an shRNA-knockdown strategy, we show that the transcript levels of an RNA helicase, Ddx1, regulates strain differences in the amount of nitric oxide produced by macrophage after stimulation with interferon gamma and tumor necrosis factor. Our results provide a template for discovering candidate genes that modulate macrophage-mediated complex traits.},
+
+}
+
+@article{Moller:2014,
+  author       = {M\"{o}ller, S. and Afgan, E. and Banck, M. and Bonnal, R. J. and Booth, T. and Chilton, J. and Cock, P. J. and Gumbel, M. and Harris, N. and Holland, R. and Kalas, M. and Kajan, L. and Kibukawa, E. and Powel, D. R. and Prins, P. and Quinn, J. and Sallou, O. and Strozzi, F. and Seemann, T. and Sloggett, C. and Soiland-Reyes, S. and Spooner, W. and Steinbiss, S. and Tille, A. and Travis, A. J. and Guimera, R. and Katayama, T. and Chapman, B. A.},
+  title        = {{Community-driven development for computational biology at Sprints, Hackathons and Codefests}},
+  journal      = {BMC Bioinformatics},
+  keywords     = "cv",
+  year         = {2014},
+  volume       = {15 Suppl 14},
+  pages        = {S7},
+  doi          = {10.1186/1471-2105-15-S14-S7},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/25472764},
+  abstract     = {BACKGROUND: Computational biology comprises a wide range of technologies and approaches. Multiple technologies can be combined to create more powerful workflows if the individuals contributing the data or providing tools for its interpretation can find mutual understanding and consensus. Much conversation and joint investigation are required in order to identify and implement the best approaches. Traditionally, scientific conferences feature talks presenting novel technologies or insights, followed up by informal discussions during coffee breaks. In multi-institution collaborations, in order to reach agreement on implementation details or to transfer deeper insights in a technology and practical skills, a representative of one group typically visits the other. However, this does not scale well when the number of technologies or research groups is large. Conferences have responded to this issue by introducing Birds-of-a-Feather (BoF) sessions, which offer an opportunity for individuals with common interests to intensify their interaction. However, parallel BoF sessions often make it hard for participants to join multiple BoFs and find common ground between the different technologies, and BoFs are generally too short to allow time for participants to program together. RESULTS: This report summarises our experience with computational biology Codefests, Hackathons and Sprints, which are interactive developer meetings. They are structured to reduce the limitations of traditional scientific meetings described above by strengthening the interaction among peers and letting the participants determine the schedule and topics. These meetings are commonly run as loosely scheduled "unconferences" (self-organized identification of participants and topics for meetings) over at least two days, with early introductory talks to welcome and organize contributors, followed by intensive collaborative coding sessions. We summarise some prominent achievements of those meetings and describe differences in how these are organised, how their audience is addressed, and their outreach to their respective communities. CONCLUSIONS: Hackathons, Codefests and Sprints share a stimulating atmosphere that encourages participants to jointly brainstorm and tackle problems of shared interest in a self-driven proactive environment, as well as providing an opportunity for new participants to get involved in collaborative projects.},
+
+}
+
+@article{Katayama:2014,
+  author       = {Katayama, T. and Wilkinson, M. D. and Aoki-Kinoshita, K. F. and Kawashima, S. and Yamamoto, Y. and Yamaguchi, A. and Okamoto, S. and Kawano, S. and Kim, J. D. and Wang, Y. and Wu, H. and Kano, Y. and Ono, H. and Bono, H. and Kocbek, S. and Aerts, J. and Akune, Y. and Antezana, E. and Arakawa, K. and Aranda, B. and Baran, J. and Bolleman, J. and Bonnal, R. J. and Buttigieg, P. L. and Campbell, M. P. and Chen, Y. A. and Chiba, H. and Cock, P. J. and Cohen, K. B. and Constantin, A. and Duck, G. and Dumontier, M. and Fujisawa, T. and Fujiwara, T. and Goto, N. and Hoehndorf, R. and Igarashi, Y. and Itaya, H. and Ito, M. and Iwasaki, W. and Kalas, M. and Katoda, T. and Kim, T. and Kokubu, A. and Komiyama, Y. and Kotera, M. and Laibe, C. and Lapp, H. and Lutteke, T. and Marshall, M. S. and Mori, T. and Mori, H. and Morita, M. and Murakami, K. and Nakao, M. and Narimatsu, H. and Nishide, H. and Nishimura, Y. and Nystrom-Persson, J. and Ogishima, S. and Okamura, Y. and Okuda, S. and Oshita, K. and Packer, N. H. and Prins, P. and Ranzinger, R. and Rocca-Serra, P. and Sansone, S. and Sawaki, H. and Shin, S. H. and Splendiani, A. and Strozzi, F. and Tadaka, S. and Toukach, P. and Uchiyama, I. and Umezaki, M. and Vos, R. and Whetzel, P. L. and Yamada, I. and Yamasaki, C. and Yamashita, R. and York, W. S. and Zmasek, C. M. and Kawamoto, S. and Takagi, T.},
+  title        = {{BioHackathon series in 2011 and 2012: penetration of ontology and linked data in life science domains}},
+  journal      = {J Biomed Semantics},
+  year         = {2014},
+  keywords     = "cv",
+  volume       = {5},
+  number       = {1},
+  pages        = {5},
+  doi          = {10.1186/2041-1480-5-5},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/24495517},
+  abstract     = {The application of semantic technologies to the integration of biological data and the interoperability of bioinformatics analysis and visualization tools has been the common theme of a series of annual BioHackathons hosted in Japan for the past five years. Here we provide a review of the activities and outcomes from the BioHackathons held in 2011 in Kyoto and 2012 in Toyama. In order to efficiently implement semantic technologies in the life sciences, participants formed various sub-groups and worked on the following topics: Resource Description Framework (RDF) models for specific domains, text mining of the literature, ontology development, essential metadata for biological databases, platforms to enable efficient Semantic Web technology development and interoperability, and the development of applications for Semantic Web data. In this review, we briefly introduce the themes covered by these sub-groups. The observations made, conclusions drawn, and software development projects that emerged from these activities are discussed.},
+
+}
+
+@article{Katayama:2013,
+  author       = {Katayama, T. and Wilkinson, M. D. and Micklem, G. and Kawashima, S. and Yamaguchi, A. and Nakao, M. and Yamamoto, Y. and Okamoto, S. and Oouchida, K. and Chun, H. W. and Aerts, J. and Afzal, H. and Antezana, E. and Arakawa, K. and Aranda, B. and Belleau, F. and Bolleman, J. and Bonnal, R. J. and Chapman, B. and Cock, P. J. and Eriksson, T. and Gordon, P. M. and Goto, N. and Hayashi, K. and Horn, H. and Ishiwata, R. and Kaminuma, E. and Kasprzyk, A. and Kawaji, H. and Kido, N. and Kim, Y. J. and Kinjo, A. R. and Konishi, F. and Kwon, K. H. and Labarga, A. and Lamprecht, A. L. and Lin, Y. and Lindenbaum, P. and McCarthy, L. and Morita, H. and Murakami, K. and Nagao, K. and Nishida, K. and Nishimura, K. and Nishizawa, T. and Ogishima, S. and Ono, K. and Oshita, K. and Park, K. J. and Prins, P. and Saito, T. L. and Samwald, M. and Satagopam, V. P. and Shigemoto, Y. and Smith, R. and Splendiani, A. and Sugawara, H. and Taylor, J. and Vos, R. A. and Withers, D. and Yamasaki, C. and Zmasek, C. M. and Kawamoto, S. and Okubo, K. and Asai, K. and Takagi, T.},
+  title        = {{The 3rd DBCLS BioHackathon: improving life science data integration with Semantic Web technologies}},
+  journal      = {J Biomed Semantics},
+  keywords     = "cv",
+  year         = {2013},
+  volume       = {4},
+  number       = {1},
+  pages        = {6},
+  doi          = {10.1186/2041-1480-4-6},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/23398680},
+  abstract     = {BACKGROUND: BioHackathon 2010 was the third in a series of meetings hosted by the Database Center for Life Sciences (DBCLS) in Tokyo, Japan. The overall goal of the BioHackathon series is to improve the quality and accessibility of life science research data on the Web by bringing together representatives from public databases, analytical tool providers, and cyber-infrastructure researchers to jointly tackle important challenges in the area of in silico biological research. RESULTS: The theme of BioHackathon 2010 was the 'Semantic Web', and all attendees gathered with the shared goal of producing Semantic Web data from their respective resources, and/or consuming or interacting those data using their tools and interfaces. We discussed on topics including guidelines for designing semantic data and interoperability of resources. We consequently developed tools and clients for analysis and visualization. CONCLUSION: We provide a meeting report from BioHackathon 2010, in which we describe the discussions, decisions, and breakthroughs made as we moved towards compliance with Semantic Web technologies - from source provider, through middleware, to the end-consumer.},
+
+}
+
+@article{Goto:2010,
+  pmid         = {20739307},
+  pmcid        = {2951089},
+  keywords     = "cv,first,bio4",
+  note         = "open access",
+  author       = {Goto, N. and Prins, P. and Nakao, M. and Bonnal, R. and Aerts, J. and Katayama, T.},
+  title        = {{BioRuby: bioinformatics software for the Ruby programming language}},
+  journal      = {Bioinformatics},
+  year         = {2010},
+  volume       = {26},
+  number       = {20},
+  pages        = {2617-2619},
+  doi          = {10.1093/bioinformatics/btq475},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/20739307},
+  abstract     = {SUMMARY: The BioRuby software toolkit contains a comprehensive set of free development tools and libraries for bioinformatics and molecular biology, written in the Ruby programming language. BioRuby has components for sequence analysis, pathway analysis, protein modelling and phylogenetic analysis; it supports many widely used data formats and provides easy access to databases, external programs and public web services, including BLAST, KEGG, GenBank, MEDLINE and GO. BioRuby comes with a tutorial, documentation and an interactive environment, which can be used in the shell, and in the web browser. AVAILABILITY: BioRuby is free and open source software, made available under the Ruby license. BioRuby runs on all platforms that support Ruby, including Linux, Mac OS X and Windows. And, with JRuby, BioRuby runs on the Java Virtual Machine. The source code is available from http://www.bioruby.org/. CONTACT: katayama@bioruby.org},
+
+}
+
+@article{Katayama:2010,
+  author       = {Katayama, T. and Arakawa, K. and Nakao, M. and Ono, K. and Aoki-Kinoshita, K. F. and Yamamoto, Y. and Yamaguchi, A. and Kawashima, S. and Chun, H. W. and Aerts, J. and Aranda, B. and Barboza, L. H. and Bonnal, R. J. and Bruskiewich, R. and Bryne, J. C. and Fernandez, J. M. and Funahashi, A. and Gordon, P. M. and Goto, N. and Groscurth, A. and Gutteridge, A. and Holland, R. and Kano, Y. and Kawas, E. A. and Kerhornou, A. and Kibukawa, E. and Kinjo, A. R. and Kuhn, M. and Lapp, H. and Lehvaslaiho, H. and Nakamura, H. and Nakamura, Y. and Nishizawa, T. and Nobata, C. and Noguchi, T. and Oinn, T. M. and Okamoto, S. and Owen, S. and Pafilis, E. and Pocock, M. and Prins, P. and Ranzinger, R. and Reisinger, F. and Salwinski, L. and Schreiber, M. and Senger, M. and Shigemoto, Y. and Standley, D. M. and Sugawara, H. and Tashiro, T. and Trelles, O. and Vos, R. A. and Wilkinson, M. D. and York, W. and Zmasek, C. M. and Asai, K. and Takagi, T.},
+  title        = {{The DBCLS BioHackathon: standardization and interoperability for bioinformatics web services and workflows. The DBCLS BioHackathon Consortium*}},
+  journal      = {J Biomed Semantics},
+  keywords     = "cv",
+  year         = {2010},
+  volume       = {1},
+  number       = {1},
+  pages        = {8},
+  doi          = {10.1186/2041-1480-1-8},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/20727200},
+  abstract     = {Web services have become a key technology for bioinformatics, since life science databases are globally decentralized and the exponential increase in the amount of available data demands for efficient systems without the need to transfer entire databases for every step of an analysis. However, various incompatibilities among database resources and analysis services make it difficult to connect and integrate these into interoperable workflows. To resolve this situation, we invited domain specialists from web service providers, client software developers, Open Bio* projects, the BioMoby project and researchers of emerging areas where a standard exchange data format is not well established, for an intensive collaboration entitled the BioHackathon 2008. The meeting was hosted by the Database Center for Life Science (DBCLS) and Computational Biology Research Center (CBRC) and was held in Tokyo from February 11th to 15th, 2008. In this report we highlight the work accomplished and the common issues arisen from this event, including the standardization of data exchange formats and services in the emerging fields of glycoinformatics, biological interaction networks, text mining, and phyloinformatics. In addition, common shared object development based on BioSQL, as well as technical challenges in large data management, asynchronous services, and security are discussed. Consequently, we improved interoperability of web services in several fields, however, further cooperation among major database centers and continued collaborative efforts between service providers and software developers are still necessary for an effective advance in bioinformatics web service technologies.},
+
+}
+
+@article{Tretyakov:2013,
+  author       = {Tretyakov, K. and Laur, S. and Smant, G. and Vilo, J. and Prins, P.},
+  title        = {{Fast probabilistic file fingerprinting for big data}},
+  journal      = {BMC Genomics},
+  keywords     = "cv,last",
+  year         = {2013},
+  volume       = {14 Suppl 2},
+  pages        = {S8},
+  doi          = {10.1186/1471-2164-14-S2-S8},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/23445565},
+  abstract     = {BACKGROUND: Biological data acquisition is raising new challenges, both in data analysis and handling. Not only is it proving hard to analyze the data at the rate it is generated today, but simply reading and transferring data files can be prohibitively slow due to their size. This primarily concerns logistics within and between data centers, but is also important for workstation users in the analysis phase. Common usage patterns, such as comparing and transferring files, are proving computationally expensive and are tying down shared resources. RESULTS: We present an efficient method for calculating file uniqueness for large scientific data files, that takes less computational effort than existing techniques. This method, called Probabilistic Fast File Fingerprinting (PFFF), exploits the variation present in biological data and computes file fingerprints by sampling randomly from the file instead of reading it in full. Consequently, it has a flat performance characteristic, correlated with data variation rather than file size. We demonstrate that probabilistic fingerprinting can be as reliable as existing hashing techniques, with provably negligible risk of collisions. We measure the performance of the algorithm on a number of data storage and access technologies, identifying its strengths as well as limitations. CONCLUSIONS: Probabilistic fingerprinting may significantly reduce the use of computational resources when comparing very large files. Utilisation of probabilistic fingerprinting techniques can increase the speed of common file-related workflows, both in the data center and for workbench analysis. The implementation of the algorithm is available as an open-source tool named pfff, as a command-line tool as well as a C library. The tool can be downloaded from http://biit.cs.ut.ee/pfff.},
+
+}
+
+@article{Mckeown:2011,
+  author       = {McKeown, P. C. and Laouielle-Duprat, S. and Prins, P. and Wolff, P. and Schmid, M. W. and Donoghue, M. T. and Fort, A. and Duszynska, D. and Comte, A. and Lao, N. T. and Wennblom, T. J. and Smant, G. and Kohler, C. and Grossniklaus, U. and Spillane, C.},
+  title        = {{Identification of imprinted genes subject to parent-of-origin specific expression in Arabidopsis thaliana seeds}},
+  journal      = {BMC Plant Biol},
+  keywords     = "cv,first",
+  year         = {2011},
+  volume       = {11},
+  pages        = {113},
+  doi          = {10.1186/1471-2229-11-113},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/21838868},
+  abstract     = {BACKGROUND: Epigenetic regulation of gene dosage by genomic imprinting of some autosomal genes facilitates normal reproductive development in both mammals and flowering plants. While many imprinted genes have been identified and intensively studied in mammals, smaller numbers have been characterized in flowering plants, mostly in Arabidopsis thaliana. Identification of additional imprinted loci in flowering plants by genome-wide screening for parent-of-origin specific uniparental expression in seed tissues will facilitate our understanding of the origins and functions of imprinted genes in flowering plants. RESULTS: cDNA-AFLP can detect allele-specific expression that is parent-of-origin dependent for expressed genes in which restriction site polymorphisms exist in the transcripts derived from each allele. Using a genome-wide cDNA-AFLP screen surveying allele-specific expression of 4500 transcript-derived fragments, we report the identification of 52 maternally expressed genes (MEGs) displaying parent-of-origin dependent expression patterns in Arabidopsis siliques containing F1 hybrid seeds (3, 4 and 5 days after pollination). We identified these MEGs by developing a bioinformatics tool (GenFrag) which can directly determine the identities of transcript-derived fragments from (i) their size and (ii) which selective nucleotides were added to the primers used to generate them. Hence, GenFrag facilitates increased throughput for genome-wide cDNA-AFLP fragment analyses. The 52 MEGs we identified were further filtered for high expression levels in the endosperm relative to the seed coat to identify the candidate genes most likely representing novel imprinted genes expressed in the endosperm of Arabidopsis thaliana. Expression in seed tissues of the three top-ranked candidate genes, ATCDC48, PDE120 and MS5-like, was confirmed by Laser-Capture Microdissection and qRT-PCR analysis. Maternal-specific expression of these genes in Arabidopsis thaliana F1 seeds was confirmed via allele-specific transcript analysis across a range of different accessions. Differentially methylated regions were identified adjacent to ATCDC48 and PDE120, which may represent candidate imprinting control regions. Finally, we demonstrate that expression levels of these three genes in vegetative tissues are MET1-dependent, while their uniparental maternal expression in the seed is not dependent on MET1. CONCLUSIONS: Using a cDNA-AFLP transcriptome profiling approach, we have identified three genes, ATCDC48, PDE120 and MS5-like which represent novel maternally expressed imprinted genes in the Arabidopsis thaliana seed. The extent of overlap between our cDNA-AFLP screen for maternally expressed imprinted genes, and other screens for imprinted and endosperm-expressed genes is discussed.},
+
+}
+
+@article{Bakker:2011,
+  author       = {Bakker, E. and Borm, T. and Prins, P. and van der Vossen, E. and Uenk, G. and Arens, M. and de Boer, J. and van Eck, H. and Muskens, M. and Vossen, J. and van der Linden, G. and van Ham, R. and Klein-Lankhorst, R. and Visser, R. and Smant, G. and Bakker, J. and Goverse, A.},
+  title        = {{A genome-wide genetic map of NB-LRR disease resistance loci in potato}},
+  journal      = {Theor Appl Genet},
+  keywords     = "cv",
+  year         = {2011},
+  volume       = {123},
+  number       = {3},
+  pages        = {493-508},
+  doi          = {10.1007/s00122-011-1602-z},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/21590328},
+  abstract     = {Like all plants, potato has evolved a surveillance system consisting of a large array of genes encoding for immune receptors that confer resistance to pathogens and pests. The majority of these so-called resistance or R proteins belong to the super-family that harbour a nucleotide binding and a leucine-rich-repeat domain (NB-LRR). Here, sequence information of the conserved NB domain was used to investigate the genome-wide genetic distribution of the NB-LRR resistance gene loci in potato. We analysed the sequences of 288 unique BAC clones selected using filter hybridisation screening of a BAC library of the diploid potato clone RH89-039-16 (S. tuberosum ssp. tuberosum) and a physical map of this BAC library. This resulted in the identification of 738 partial and full-length NB-LRR sequences. Based on homology of these sequences with known resistance genes, 280 and 448 sequences were classified as TIR-NB-LRR (TNL) and CC-NB-LRR (CNL) sequences, respectively. Genetic mapping revealed the presence of 15 TNL and 32 CNL loci. Thirty-six are novel, while three TNL loci and eight CNL loci are syntenic with previously identified functional resistance genes. The genetic map was complemented with 68 universal CAPS markers and 82 disease resistance trait loci described in literature, providing an excellent template for genetic studies and applied research in potato.},
+
+}
+
+
+
+@article{Rehman:2009,
+  author       = {Rehman, S. and Postma, W. and Tytgat, T. and Prins, P. and Qin, L. and Overmars, H. and Vossen, J. and Spiridon, L. N. and Petrescu, A. J. and Goverse, A. and Bakker, J. and Smant, G.},
+  title        = {{A secreted SPRY domain-containing protein (SPRYSEC) from the plant-parasitic nematode Globodera rostochiensis interacts with a CC-NB-LRR protein from a susceptible tomato}},
+  journal      = {Mol Plant Microbe Interact},
+  keywords     = "cv",
+  year         = {2009},
+  volume       = {22},
+  number       = {3},
+  pages        = {330-340},
+  doi          = {10.1094/MPMI-22-3-0330},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/19245327},
+  abstract     = {Esophageal gland secretions from nematodes are believed to include effectors that play important roles in plant parasitism. We have identified a novel gene family encoding secreted proteins specifically expressed in the dorsal esophageal gland of Globodera rostochiensis early in the parasitic cycle, and which contain the B30.2/SPRY domain. The secondary structure of these proteins, named the secreted SPRY domain-containing proteins (SPRYSEC), includes highly conserved regions folding into beta-strands interspersed with loops varying in sequence and in length. Mapping sequence diversity onto a three-dimensional structure model of the SPRYSEC indicated that most of the variability is in the extended loops that shape the so-called surface A in the SPRY domains. Seven of nine amino acid sites subjected to diversifying selection in the SPRYSEC are also at this surface. In both yeast-two-hybrid screening using a library from a susceptible tomato and in an in vitro pull-down assay, one of the SPRYSEC interacted with the leucine-rich repeat (LRR) region of a novel coiled-coil nucleotide-binding LRR protein, which is highly similar to members of the SW5 resistance gene cluster. Given that the tomato cultivar used is susceptible to nematode infection, this SPRYSEC could be an evolutionary intermediate that binds to a classical immune receptor but does not yet, or no longer, triggers a resistance response. Alternatively, this SPRYSEC may bind to the immune receptor to downregulate its activity.},
+
+}
+
+@article{LiY:2006,
+  pmid         = {17196041},
+  pmcid        = {1756913},
+  keywords     = "cv,bio3",
+  note         = "open access",
+  author       = {Li, Y. and Alvarez, O. A. and Gutteling, E. W. and Tijsterman, M. and Fu, J. and Riksen, J. A. and Hazendonk, E. and Prins, P. and Plasterk, R. H. and Jansen, R. C. and Breitling, R. and Kammenga, J. E.},
+  title        = {{Mapping determinants of gene expression plasticity by genetical genomics in C. elegans}},
+  journal      = {PLoS Genet},
+  year         = {2006},
+  volume       = {2},
+  number       = {12},
+  pages        = {e222},
+  doi          = {10.1371/journal.pgen.0020222},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/17196041},
+  abstract     = {Recent genetical genomics studies have provided intimate views on gene regulatory networks. Gene expression variations between genetically different individuals have been mapped to the causal regulatory regions, termed expression quantitative trait loci. Whether the environment-induced plastic response of gene expression also shows heritable difference has not yet been studied. Here we show that differential expression induced by temperatures of 16 degrees C and 24 degrees C has a strong genetic component in Caenorhabditis elegans recombinant inbred strains derived from a cross between strains CB4856 (Hawaii) and N2 (Bristol). No less than 59\% of 308 trans-acting genes showed a significant eQTL-by-environment interaction, here termed plasticity quantitative trait loci. In contrast, only 8\% of an estimated 188 cis-acting genes showed such interaction. This indicates that heritable differences in plastic responses of gene expression are largely regulated in trans. This regulation is spread over many different regulators. However, for one group of trans-genes we found prominent evidence for a common master regulator: a transband of 66 coregulated genes appeared at 24 degrees C. Our results suggest widespread genetic variation of differential expression responses to environmental impacts and demonstrate the potential of genetical genomics for mapping the molecular determinants of phenotypic plasticity.},
+
+}
+
+@article{Qin:2001,
+  author       = {Qin, L. and Prins, P. and Jones, J. T. and Popeijus, H. and Smant, G. and Bakker, J. and Helder, J.},
+  title        = {{GenEST, a powerful bidirectional link between cDNA sequence data and gene expression profiles generated by cDNA-AFLP}},
+  journal      = {Nucleic Acids Res},
+  keywords     = "cv",
+  year         = {2001},
+  volume       = {29},
+  number       = {7},
+  pages        = {1616-1622},
+  doi          = {10.1093/nar/29.7.1616},
+  url          = {http://www.ncbi.nlm.nih.gov/pubmed/11266565},
+  abstract     = {The release of vast quantities of DNA sequence data by large-scale genome and expressed sequence tag (EST) projects underlines the necessity for the development of efficient and inexpensive ways to link sequence databases with temporal and spatial expression profiles. Here we demonstrate the power of linking cDNA sequence data (including EST sequences) with transcript profiles revealed by cDNA-AFLP, a highly reproducible differential display method based on restriction enzyme digests and selective amplification under high stringency conditions. We have developed a computer program (GenEST) that predicts the sizes of virtual transcript-derived fragments (TDFs) of in silico-digested cDNA sequences retrieved from databases. The vast majority of the resulting virtual TDFs could be traced back among the thousands of TDFs displayed on cDNA-AFLP gels. Sequencing of the corresponding bands excised from cDNA-AFLP gels revealed no inconsistencies. As a consequence, cDNA sequence databases can be screened very efficiently to identify genes with relevant expression profiles. The other way round, it is possible to switch from cDNA-AFLP gels to sequences in the databases. Using the restriction enzyme recognition sites, the primer extensions and the estimated TDF size as identifiers, the DNA sequence(s) corresponding to a TDF with an interesting expression pattern can be identified. In this paper we show examples in both directions by analyzing the plant parasitic nematode Globodera rostochiensis. Various novel pathogenicity factors were identified by combining ESTs from the infective stage juveniles with expression profiles of approximately 4000 genes in five developmental stages produced by cDNA-AFLP.},
+
+}
+
+@misc{PubSeq,
+  author = {Pjotr Prins et al},
+  title = {{PubSeq}},
+  howpublished = "\weblink{http://covid-19.genenetwork.org}",
+  year = {2020},
+  note = "Online"
+}
+
+@misc{GuixCWL,
+  author = {Pjotr Prins},
+  title = {{Creating a reproducible workflow with CWL}},
+  howpublished = "\weblink{https://hpc.guix.info/blog/2019 \linebreak /01/creating-a-reproducible-workflow-with-cwl/}",
+  year = {2019},
+  note = "Online"
 }

@@ -249,19 +249,14 @@ A JSON record
           (display (pretty url2 "~\\href{" "}{\\ding{234}}"))
           #t
           )
-      (if (or pmcid pmid)
-          (begin
-            (display "\\prefs{")
-            (if pmid
-                (display (pretty2 bib 'PMID "\\pmid{" "}"))
-                #t)
-            (if pmcid
-                (display (pretty2 bib 'PMCID "\\pmcid{" "}"))
-                #t)
-            (display "}")
-            )
-          (display (pretty2 bib 'DOI "\\doi{" "}")))
-
+      (display "\\prefs{")
+      (if pmcid
+          (display (pretty2 bib 'PMCID "\\pmcid{" "}"))
+          (if pmid
+              (display (pretty2 bib 'PMID "\\pmid{" "}"))
+              (display (pretty2 bib 'DOI "\\doi{" "}")))
+          )
+      (display "}") ;; prefs
       (display "\n\n")
       )))
 

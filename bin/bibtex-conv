@@ -109,18 +109,29 @@ A JSON record
            (fullname (form-author given family))
            ]
       (match fullname
-        [(or "P. Prins" "Prins P" "Prins~P")
+        [(or "Prins P" "Prins~P")
          (if (latex-mode)
              "\\pprins"
-             (string-append "_" fullname "_"))
+             (string-append "_" fullname "_")) ; markdown underline
          ]
         [_ fullname]
         )
     )))
 
-(define (reduce-authors lst)
-  ;; limit authors to 4 if more than 20
-  (let [(as (authors lst))]
+(define (fix-pprins lst)
+  (let [(pos (index-of lst "\\pprins"))
+        (len (length lst))]
+    (for/list ([(e) lst]
+               [(i) (in-naturals)])
+      (if (and (= pos i) (= pos (- len 2))) ;; add a backslash when before last item
+               (string-append e "\\")
+              e)
+      ))
+  )
+
+(define (limit-authors lst)
+  ;; edit author list and limit authors to 4 if more than 20
+  (let [(as (fix-pprins (authors lst)))]
     (if (> (length as) 20)
         (append (take as 4) '("\\emph{et al.}"))
         as)
@@ -210,10 +221,10 @@ A JSON record
            (last-author? (string-contains? keyword "last"))
            ]
       (display "\\item ")
-      (let [(auths (reduce-authors (hash-ref bib 'author)))]
-        (display (string-join (drop-right auths 1) ", "))
+      (let [(auths (limit-authors (hash-ref bib 'author)))]
+        (display (string-join (drop-right auths 1) ", ")) ;; join all authors except for last
         (let [(lst (last auths))]
-          (if (string=? lst "\\emph{et al.}")
+          (if (string=? lst "\\emph{et al.}") ;; show last author
               (display (string-append " " lst))
               (display (string-append " and " lst)))))
       (display (pretty (year bib) "\\pyear{" "}"))

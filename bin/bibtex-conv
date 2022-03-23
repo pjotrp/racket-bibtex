@@ -213,12 +213,12 @@ A JSON record
       ))
 
 (define (make-doi doi)
-  (string-append "https://doi.org/" doi)
-  )
+  (string-append "https://doi.org/" doi))
 
-(define (make-pmid id)
-  ""
-)
+(define (make-pmid bib)
+  (if (hash-ref bib 'PMCID #f)
+      (pretty2 bib 'PMCID ", PMC" "")
+      (pretty2 bib 'PMID ", PMID" "")))
 
 (define (latex-output short-list)
   (for ([(bib) (filtered-list (sorted-list short-list))])
@@ -263,11 +263,12 @@ A JSON record
           (display (pretty url2 "~\\href{" "}{\\ding{234}}"))
       (display (pretty2 bib 'note " {\\bf (" ")}"))
       (if (pmid?)
-          (display (pretty2 bib 'PMID ", {\\bf PMID" "}"))
+          (display (make-pmid bib))
           #t)
       (if (doi?)
           (display (pretty2 bib 'DOI ", DOI:~"))
           #t)
+      (display (pretty2 bib 'note " {\\bf (" ")}"))
       (if (url?)
           (display (pretty url2 "~\\bibhref{" "}"))
           #t

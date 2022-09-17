@@ -1,7 +1,12 @@
 #+TITLE: Bibtex with Racket
 #+AUTHOR: Pjotr Prins
 
+* Introduction
+
+This little program uses pandoc to output JSON for bibtex inputs. Next we transform this to html and org markdown (or is it markup?).
+
 * Table of Contents                                                     :TOC:
+ - [[#introduction][Introduction]]
  - [[#bibtex-conv][Bibtex-conv]]
  - [[#bib-file-manipulations][Bib file manipulations]]
  - [[#install][Install]]

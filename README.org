@@ -90,7 +90,14 @@ Dependencies:
    pandoc --to=csljson test.bib
 #+end_src
 
+Generate my CV in org markdown:
+
+: pandoc --to=csljson pjotr.bib | racket ./bin/bibtex-conv -k cv
+
+LaTeX output:
+
+: pandoc --to=csljson pjotr.bib | racket ./bin/bibtex-conv -k cv -l
+
 * Copyright
 
-Copyright (c) 2020-2022 Pjotr Prins.  This code is published under the
-GPL3, see [[LICENSE]] for details.
+Copyright (c) 2020-2022 Pjotr Prins.  This code is published under the GPL3, see [[LICENSE]] for details.

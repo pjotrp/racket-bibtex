@@ -122,7 +122,7 @@ A JSON record
       (match fullname
         [(or "P. Prins" "Prins P" "Prins~P" "Prins@@html:&nbsp;@@P")
          (if (latex-mode)
-             (string-append "\\textsc{" fullname "}")
+             (string-append "\\pprins")
              (string-append "@@html:<span class=\"pjotr\">@@" fullname "@@html:</span>@@"))
          ]
         [_ fullname]
@@ -132,6 +132,7 @@ A JSON record
 (define (fix-pprins lst)
   (let [(pos (index-of lst "\\pprins"))
         (len (length lst))]
+    (display (string-join lst) (current-error-port))
     (for/list ([(e) lst]
                [(i) (in-naturals)])
       (if (and (= pos i) (= pos (- len 2))) ;; add a backslash when before last item
@@ -235,6 +236,7 @@ A JSON record
            (first-author? (string-contains? keyword "first"))
            (last-author? (string-contains? keyword "last"))
            ]
+      (display (string-append "Parsing " (hash-ref bib 'title )) (current-error-port))
       (display "\\item ")
       (let [(auths (limit-authors (hash-ref bib 'author)))]
         (display (string-join (drop-right auths 1) ", ")) ;; join all authors except for last

@@ -228,7 +228,7 @@ A JSON record
            (url2  (if url1
                       url1
                       (make-doi (hash-ref bib 'DOI #f))))
-           (journal (hash-ref bib 'container-title))
+           (journal (hash-ref bib 'container-title #f))
            (pmcid  (hash-ref bib 'PMCID #f))
            (pmid  (hash-ref bib 'PMID #f))
            (doi  (hash-ref bib 'DOI #f))

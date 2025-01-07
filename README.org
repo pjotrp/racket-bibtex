@@ -3,7 +3,7 @@
 
 * Introduction
 
-This little program uses pandoc to output JSON for bibtex inputs. Next we transform this to html and org markdown (or is it markup?).
+This little program uses pandoc to output JSON for bibtex inputs. Next we transform this to html and org markdown (or is it markup?). It is written in racket+pandoc. Should move to guile some day.
 
 * Table of Contents                                                     :TOC:
  - [[#introduction][Introduction]]
@@ -59,7 +59,7 @@ which can be turned into HTML via emacs org-mode. To generate LaTeX
 directly it is also possible to use the --latex switch
 
 #+begin_src sh
-pandoc-citeproc --bib2json biblio.bib|bibtex-conv --keyword group --latex
+pandoc --to=csljson test/data/biblio.bib | racket ./bin/bibtex-conv --keyword group --latex
 #+end_src
 
 renders

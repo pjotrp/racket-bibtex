@@ -1,0 +1,2 @@
+guix shell -C -F racket ghc-pandoc ghc-citeproc coreutils grep
+
